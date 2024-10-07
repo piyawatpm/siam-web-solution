@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    // "build": "next build --output public"
+    "lint": "next lint"
   },
   "dependencies": {
     "framer-motion": "^11.11.1",
