@@ -8,7 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-poppins)", "sans-serif"],
+        kanetin: ["Kanetin", "sans-serif"],
+      },
       colors: {
+        primary: "#A9CBD0",
+        secondary: "#58D3D3",
+        tertiary: "#2BA9A9",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
@@ -16,4 +24,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
