@@ -17,10 +17,9 @@ const poppins = Poppins({
 import localFont from "next/font/local";
 
 const kanetin = localFont({
-  src: "./fonts/KanetinPersonalUse-vmXK9.otf",
+  src: "../public/fonts/KanetinPersonalUse-vmXK9.otf",
   variable: "--font-kanetin",
 });
-
 export const metadata: Metadata = {
   title: "Siam Web Solution - Professional Web Development Services",
   description:

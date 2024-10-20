@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-
+import Image from "next/image";
 const Header = () => {
   const [lang, setLang] = useState("EN");
   const controls = useAnimation();
@@ -18,7 +18,7 @@ const Header = () => {
       });
 
       // Delay for 1 second
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 2500));
 
       // Change theme
       setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`flex py-10 justify-between relative px-10 z-10 transition-colors duration-1000`}
+      className={`flex py-10 justify-between relative px-10 z-[999] transition-colors duration-[500ms]`}
       initial={{ y: -50, opacity: 0 }}
       animate={controls}
       style={{
@@ -49,6 +49,8 @@ const Header = () => {
         <motion.div className="py-1 px-4 rounded-[2rem] border-[1px] border-current">
           Menu
         </motion.div>
+        {/* <Image src="/images/cursor.png" alt="cursor" width={16} height={16} /> */}
+
         <motion.div className="py-1 h-full aspect-square px-4 rounded-full border-[1px] border-current"></motion.div>
         <motion.div className="ml-2 py-1 px-4 rounded-[2rem] border-[1px] border-current">
           Contact
