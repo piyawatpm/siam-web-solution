@@ -12,8 +12,8 @@
 html,
 body,
 * {
-  /* cursor: url("/images/cursor.png") 16 16, auto !important; */
-  cursor: url(/images/cursor.png), 50 50, auto;
+  cursor: url("/images/cursor-small.png"), auto !important;
+  /* cursor: url(/images/cursor.), pointer !important; */
 }
 :root {
   --background: #ffffff;

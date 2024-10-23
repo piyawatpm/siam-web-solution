@@ -20,6 +20,8 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  console.log("portfolio re-rendered");
+
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">

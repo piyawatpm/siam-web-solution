@@ -71,7 +71,7 @@ const AnimatedText = ({
 
   return (
     <motion.div
-      className={`overflow-hidden  text-4xl text-black flex  ${className}`}
+      className={`overflow-hidden h-[1em]  text-4xl text-black flex  ${className}`}
       variants={container}
       initial="hidden"
       animate="visible"
@@ -79,7 +79,7 @@ const AnimatedText = ({
       {words.map((word, index) => (
         <motion.span
           key={index}
-          className="inline-block  font-bold whitespace-nowrap  mr-1"
+          className="inline-block   whitespace-nowrap  mr-1"
           variants={child}
         >
           {word}
@@ -92,7 +92,7 @@ const Hero = () => {
   return (
     <div
       id="hero"
-      className="w-screen h-screen flex items-center justify-center pt-20 overflow-hidden bg-black "
+      className="w-screen  h-screen flex items-center justify-center  overflow-hidden bg-black "
     >
       {/* <Timer /> */}
       <motion.div
@@ -148,10 +148,25 @@ const Hero = () => {
               <MovingText text="Fast-Track" />
             </div>
             <div className="h-fit w-fit overflow-hidden ">
-              <AnimatedText text="Make Your Site" delay={3.5} />
+              <AnimatedText
+                text="Your Website is"
+                className=" !font-medium text-[3rem] mb-3"
+                delay={3.5}
+              />
             </div>
             <div className="h-fit w-fit overflow-hidden ">
-              <AnimatedText text="Work in China" delay={3.5} />
+              <AnimatedText
+                className=" !font-medium text-[3rem] mb-3"
+                text="the Digital Door"
+                delay={3.6}
+              />
+            </div>
+            <div className="h-fit w-fit overflow-hidden ">
+              <AnimatedText
+                className=" !font-medium text-[3rem]"
+                text="to Your Store"
+                delay={3.7}
+              />
             </div>
           </motion.div>
         </motion.div>
@@ -225,7 +240,7 @@ const Hero = () => {
       </motion.div>
       {/* Add your hero content here */}
       {/* footer */}
-      <div className="absolute bottom-3    z-[999] px-5 w-full flex justify-between ">
+      <div className="absolute bottom-3    z-10 px-5 w-full flex justify-between ">
         <AnimatedText
           big
           delay={0.4}
