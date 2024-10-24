@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
   return (
     <div
       id="hero"
-      className="w-screen relative  h-screen flex items-center justify-center  overflow-hidden bg-black "
+      className="w-screen relative  h-screen flex  items-center justify-center  overflow-hidden bg-black "
     >
       {/* <Timer /> */}
       <motion.div
@@ -143,7 +143,7 @@ const Hero: React.FC = () => {
           }}
           className=" flex-1 flex items-center justify-center flex-col gap-y-1 z-10  absolute bg-white  inset-0"
         >
-          <motion.div className="h-full flex  flex-col items-center justify-center mr-auto w-1/2 overflow-hidden">
+          <motion.div className="h-full flex  flex-col items-center justify-center mr-auto sm:w-1/2 s overflow-hidden">
             <div className=" absolute top-3 left-3">
               <MovingText text="Fast-Track" />
             </div>
@@ -194,7 +194,7 @@ const Hero: React.FC = () => {
             times: [0, 0.1, 0.33, 0.43, 0.66, 0.8, 1],
           }}
           // transition={{ duration: 2, ease: "easeInOut" }}
-          className="h-full  w-1/2 ml-auto relative z-20 bg-transparent "
+          className="h-full  sm:w-1/2 s ml-auto relative z-20 bg-transparent "
         >
           <motion.div
             animate={{
