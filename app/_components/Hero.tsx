@@ -88,11 +88,11 @@ const AnimatedText = ({
     </motion.div>
   );
 };
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
     <div
       id="hero"
-      className="w-screen  h-screen flex items-center justify-center  overflow-hidden bg-black "
+      className="w-screen relative  h-screen flex items-center justify-center  overflow-hidden bg-black "
     >
       {/* <Timer /> */}
       <motion.div

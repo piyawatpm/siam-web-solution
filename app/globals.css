@@ -12,35 +12,13 @@
 html,
 body,
 * {
-  cursor: url("/images/cursor-small.png"), auto !important;
+  /* cursor: url("/images/cursor-small.png"), auto !important; */
   /* cursor: url(/images/cursor.), pointer !important; */
-}
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-heading font-bold text-primary;
-  }
+  color: black;
+  background: white;
 }
 
 @layer components {
@@ -69,4 +47,19 @@ body {
 .dark {
   background-color: #171717;
   color: #ffffff;
+}
+#box {
+  position: absolute;
+  background: red;
+  height: 40px;
+  width: 40px;
+  cursor: move;
+}
+
+#ground {
+  position: absolute;
+  top: 140px;
+  height: 120px;
+  width: 400px;
+  background: #666;
 }

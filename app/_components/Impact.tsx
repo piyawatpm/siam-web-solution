@@ -1,106 +1,138 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionContainer from "./share/SectionContainer";
-
-const keywords = [
-  "GLOBAL REACH",
-  "INNOVATION",
-  "PERFORMANCE",
-  "SCALABILITY",
-  "USER EXPERIENCE",
-  "SECURITY",
-  "ANALYTICS",
-  "INTEGRATION",
-  "RESPONSIVENESS",
-  "ACCESSIBILITY",
-  "OPTIMIZATION",
-];
-
-const KeywordCloud: React.FC = () => {
-  console.log("keyword cloud re-rendered");
-  return (
-    <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4">
-      {keywords.map((keyword, index) => (
-        <motion.div
-          key={keyword}
-          className={`px-3 py-1 rounded-full text-sm md:text-base ${
-            index % 2 === 0 ? "bg-blue-200" : "bg-white"
-          }`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-        >
-          {keyword}
-        </motion.div>
-      ))}
-    </div>
-  );
-};
+import Image from "next/image";
 
 const Impact: React.FC = () => {
   return (
-    <SectionContainer
-      id="impact"
-      className="bg-gradient-to-br from-blue-100 to-white py-16"
-    >
+    <SectionContainer id="impact" className="bg-white py-16">
       <div className="container mx-auto px-4">
-        <div className="flex justify-end mb-4">
-          <div className="flex space-x-2">
-            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-white"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-white"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                  clipRule="evenodd"
-                />
-              </svg>
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="w-full md:w-1/2">
+            <div className="grid grid-cols-2 gap-4">
+              <Image
+                src="/images/team-meeting.jpg"
+                alt="Team meeting"
+                width={300}
+                height={200}
+                className="rounded-lg"
+              />
+              <Image
+                src="/images/wireframe-sketch.jpg"
+                alt="Wireframe sketch"
+                width={300}
+                height={200}
+                className="rounded-lg"
+              />
+              <Image
+                src="/images/lightbulb-idea.jpg"
+                alt="Idea concept"
+                width={300}
+                height={200}
+                className="rounded-lg"
+              />
+              <Image
+                src="/images/designer-working.jpg"
+                alt="Designer working"
+                width={300}
+                height={200}
+                className="rounded-lg"
+              />
             </div>
           </div>
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-8">
-          Empowering Global Connectivity
-          <br />
-          Through Web Innovation
-        </h2>
-        <KeywordCloud />
-        <div className="mt-12 text-center">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold"
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full md:w-1/2"
           >
-            Explore Solutions
-          </motion.button>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+              Expert & Innovative Custom Web Design
+            </h2>
+            <p className="text-lg text-gray-600 mb-6">
+              Transform your online presence with our cutting-edge web design
+              solutions. We blend creativity with functionality to deliver
+              websites that captivate your audience and drive results.
+            </p>
+            <ul className="space-y-2 mb-8">
+              <li className="flex items-center">
+                <svg
+                  className="w-6 h-6 text-green-500 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Tailored to your unique brand identity
+              </li>
+              <li className="flex items-center">
+                <svg
+                  className="w-6 h-6 text-green-500 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Optimized for user engagement and conversions
+              </li>
+              <li className="flex items-center">
+                <svg
+                  className="w-6 h-6 text-green-500 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Responsive design for all devices
+              </li>
+              <li className="flex items-center">
+                <svg
+                  className="w-6 h-6 text-green-500 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                SEO-friendly to boost your online visibility
+              </li>
+            </ul>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold"
+            >
+              Get Started Today
+            </motion.button>
+          </motion.div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <h3 className="text-6xl md:text-8xl font-bold text-blue-300 opacity-50">
-            WebImpact
-          </h3>
-        </motion.div>
       </div>
     </SectionContainer>
   );
