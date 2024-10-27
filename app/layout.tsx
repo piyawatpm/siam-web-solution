@@ -36,7 +36,6 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${poppins.variable} ${kanetin.variable}`}
     >
-      {" "}
       <body className="font-sans antialiased bg-background text-foreground">
         {children}
       </body>

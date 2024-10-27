@@ -10,18 +10,22 @@ import Testimonials from "./_components/Testimonials";
 import Impact from "./_components/Impact";
 import Compare from "./_components/Compare";
 import PayAsYouGo from "./_components/PayAsYouGo";
+import useIsMobile from "./_hook/useIsMobile";
 
 export default function Home() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll({ container: containerRef });
   const [currentSection, setCurrentSection] = useState(0);
-
+  const isMobile = useIsMobile();
+  if (isMobile !== true && isMobile !== false) {
+    console.log("loading", isMobile);
+    return <div>loading</div>;
+  }
   const sections = [
     { component: Hero, id: "hero" },
     { component: PayAsYouGo, id: "pay-as-you-go" },
-
-    // { component: Impact, id: "impact" },
-    // { component: Compare, id: "compare" },
+    { component: Impact, id: "impact" },
+    { component: Compare, id: "compare" },
     { component: Plans, id: "plans" },
     { component: Testimonials, id: "testimonials" },
     { component: Contact, id: "contact" },
@@ -83,13 +87,7 @@ export default function Home() {
         style={{ scrollSnapType: "y mandatory" }}
       >
         {sections.map(({ component: Section, id }, index) => (
-          <motion.div
-            key={id}
-            className="min-h-screen w-full"
-            // style={{ scrollSnapAlign: "start" }}
-          >
-            <Section />
-          </motion.div>
+          <Section key={id} />
         ))}
       </motion.div>
     </div>

@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`flex fixed py-10  !w-full justify-between  px-10 z-[9999999] transition-colors duration-[500ms]`}
+      className={`flex fixed py-10  !w-full justify-between  px-5 sm:px-10 z-[9999999] transition-colors duration-[500ms]`}
       initial={{ y: -50, opacity: 0 }}
       animate={controls}
       style={{
