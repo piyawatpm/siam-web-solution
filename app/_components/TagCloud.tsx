@@ -138,7 +138,7 @@ const TagCloud: React.FC = () => {
       }
       requestAnimationFrame(changeGravityWithRAF);
     }
-    
+
     (function rerender() {
       tagBodies.forEach((tag) => tag.render());
 
@@ -186,8 +186,8 @@ const TagCloud: React.FC = () => {
   return (
     <motion.div
       ref={sceneRef}
-      className="absolute inset-0 w-full h-full overflow-hidden"
-    >
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      >
       {tags.map((tag, index) => (
         <motion.div
           key={tag}

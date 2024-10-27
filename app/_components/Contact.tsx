@@ -155,7 +155,7 @@ const Contact: React.FC = () => {
           </motion.button> */}
         </motion.form>
       </div>
-      <div className=" bg-primary  !min-h-[80vh]  pt-24 flex flex-col rounded-t-[4.25rem]  relative overflow-hidden ">
+      <div className=" bg-primary  !min-h-[80vh]  pt-24 flex flex-col rounded-t-[4.25rem]  relative overflow-hidden  w-full">
         <div className="container  w-fit  relative z-20   flex-1 mx-auto px-4 flex flex-col justify-center items-center mb-24">
           {/* <div className="flex justify-end mb-4">
           <div className="flex space-x-2">

@@ -9,6 +9,7 @@ import Contact from "./_components/Contact";
 import Testimonials from "./_components/Testimonials";
 import Impact from "./_components/Impact";
 import Compare from "./_components/Compare";
+import PayAsYouGo from "./_components/PayAsYouGo";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -17,8 +18,10 @@ export default function Home() {
 
   const sections = [
     { component: Hero, id: "hero" },
-    { component: Impact, id: "impact" },
-    { component: Compare, id: "compare" },
+    { component: PayAsYouGo, id: "pay-as-you-go" },
+
+    // { component: Impact, id: "impact" },
+    // { component: Compare, id: "compare" },
     { component: Plans, id: "plans" },
     { component: Testimonials, id: "testimonials" },
     { component: Contact, id: "contact" },

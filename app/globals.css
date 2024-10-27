@@ -63,3 +63,7 @@ body {
   width: 400px;
   background: #666;
 }
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-4;
+}

@@ -47,15 +47,17 @@ const Header = () => {
       }}
     >
       <div className="flex">
-        <motion.div
-          onClick={() => setIsSidebarOpen(true)}
-          className="transition-all  hover:bg-black hover:text-white py-1 px-4 rounded-[2rem] border-[1px] border-current"
-        >
-          Menu
-        </motion.div>
-        {/* <Image src="/images/cursor.png" alt="cursor" width={16} height={16} /> */}
+        <div className=" flex group">
+          <motion.div
+            onClick={() => setIsSidebarOpen(true)}
+            className="transition-all  group-hover:bg-black group-hover:text-white py-1 px-4 rounded-[2rem] border-[1px] border-current"
+          >
+            Menu
+          </motion.div>
+          {/* <Image src="/images/cursor.png" alt="cursor" width={16} height={16} /> */}
 
-        <motion.div className="transition-all hover:bg-black hover:text-white *:py-1 h-full aspect-square px-4 rounded-full border-[1px] border-current"></motion.div>
+          <motion.div className="transition-all group-hover:bg-black group-hover:text-white *:py-1 h-full aspect-square px-4 rounded-full border-[1px] border-current"></motion.div>
+        </div>
         <motion.div className="transition-all hover:bg-black hover:text-white ml-2 py-1 px-4 rounded-[2rem] border-[1px] border-current">
           Contact
         </motion.div>

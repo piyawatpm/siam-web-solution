@@ -8,7 +8,10 @@ const SectionContainer = ({
   className?: string;
 }) => {
   return (
-    <div id={id} className={`w-full relative min-h-[100dvh] ${className}`}>
+    <div
+      id={id}
+      className={`w-full relative min-h-[100dvh] ${className} py-10 flex flex-col items-center justify-center`}
+    >
       {children}
     </div>
   );

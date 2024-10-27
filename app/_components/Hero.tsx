@@ -96,10 +96,10 @@ const Hero: React.FC = () => {
     >
       {/* <Timer /> */}
       <motion.div
-        initial={{ width: "35%", height: "20%" }}
+        initial={{ width: "20%", height: "22%" }}
         animate={{
-          width: ["35%", "35%", "35%", "35%", "50%", "50%", "100%"],
-          height: ["20%", "20%", "20%", "20%", "50%", "50%", "100%"],
+          width: ["20%", "20%", "20%", "20%", "50%", "50%", "100%"],
+          height: ["22%", "22%", "22%", "22%", "50%", "50%", "100%"],
         }}
         transition={{
           duration: 4,
@@ -214,20 +214,20 @@ const Hero: React.FC = () => {
             <motion.img
               src="/images/computer.png"
               alt="computer"
-              className="mt-auto  scale-125  absolute  left-0"
+              className="mt-auto    absolute  left-0"
               initial={{
                 opacity: 0,
 
                 rotate: -7,
-                scale: 1.25,
-                bottom: -205,
+
+                bottom: -400,
               }}
               animate={{
                 opacity: 1,
                 translateY: 0,
-                scale: 1.25,
+
                 rotate: -7,
-                bottom: -100,
+                bottom: -261,
               }}
               transition={{
                 duration: 1,
