@@ -11,7 +11,7 @@ import Impact from "./_components/Impact";
 import Compare from "./_components/Compare";
 import PayAsYouGo from "./_components/PayAsYouGo";
 import useIsMobile from "./_hook/useIsMobile";
-
+import Process from "./_components/Process";
 export default function Home() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll({ container: containerRef });
@@ -24,6 +24,7 @@ export default function Home() {
   const sections = [
     { component: Hero, id: "hero" },
     { component: PayAsYouGo, id: "pay-as-you-go" },
+    { component: Process, id: "process" },
     { component: Impact, id: "impact" },
     { component: Compare, id: "compare" },
     { component: Plans, id: "plans" },

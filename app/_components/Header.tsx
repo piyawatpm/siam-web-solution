@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Sidebar from "./Sidebar";
+import { CgMenuRight } from "react-icons/cg";
+
 const Header = () => {
   console.log("piyawat header");
   const [lang, setLang] = useState("EN");
@@ -39,7 +41,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`flex fixed py-10  !w-full justify-between  px-5 sm:px-10 z-[9999999] transition-colors duration-[500ms]`}
+      className={`flex fixed py-7  !w-full justify-between  px-5 sm:px-10 z-[9999999] transition-colors duration-[500ms]`}
       initial={{ y: -50, opacity: 0 }}
       animate={controls}
       style={{
@@ -56,13 +58,38 @@ const Header = () => {
           </motion.div>
           {/* <Image src="/images/cursor.png" alt="cursor" width={16} height={16} /> */}
 
-          <motion.div className="transition-all group-hover:bg-black group-hover:text-white *:py-1 h-full aspect-square px-4 rounded-full border-[1px] border-current"></motion.div>
+          <motion.div className="transition-all group-hover:bg-black group-hover:text-white  h-full aspect-square flex items-center justify-center rounded-full border-[1px] border-current">
+            <CgMenuRight className="w-[20px] h-[20px]" />
+          </motion.div>
         </div>
         <motion.div className="transition-all hover:bg-black hover:text-white ml-2 py-1 px-4 rounded-[2rem] border-[1px] border-current">
           Contact
         </motion.div>
       </div>
-      <div className="flex gap-2 ml-auto">
+      <motion.div
+        className="flex gap-x-2 -translate-y-[50%] left-1/2 -translate-x-[50%] top-1/2  mx-auto items-center text-2xl font-semibold absolute "
+        initial={{ x: "-50%", y: "-50%" }}
+        animate={{ x: "-120%", y: "-50%" }}
+        transition={{ duration: 0.33, delay: 3.82 }}
+      >
+        <div
+          style={{
+            backgroundColor: theme == "light" ? "#000000" : "#ffffff",
+          }}
+          className="overflow-hidden transition-all duration-[100ms] w-6 h-6 flex items-center justify-center gap-x-2"
+        >
+          <span
+            style={{
+              color: theme !== "light" ? "#000000" : "#ffffff",
+            }}
+            className="-rotate-[10deg] transition-all duration-[100ms] text-[15px] font-bold font-sans"
+          >
+            S
+          </span>
+        </div>
+        <p className="text-base font-semibold">Chinafy</p>
+      </motion.div>
+      <div className="flex gap-2 ">
         {["EN", "TH"].map((language) => (
           <div
             key={language}
