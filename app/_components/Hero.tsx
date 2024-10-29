@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import MovingText from "./share/MovingText";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AnimatedText from "./share/AnimatedText";
 import isMobile from "../_hook/useIsMobile";
 import useIsMobile from "../_hook/useIsMobile";
@@ -10,7 +10,15 @@ import CustomButton from "./share/CustomButton";
 import { MdAttachMoney } from "react-icons/md";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
+  onInView,
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    onInView(!isInView);
+  }, [isInView, onInView]);
   const isMobile = useIsMobile();
   const leftSideWidth = isMobile ? "100%" : "50%";
   return (
@@ -157,10 +165,11 @@ const Hero: React.FC = () => {
             className=" w-full h-full bg-primary  flex overflow-hidden relative"
           >
             <motion.div
+              ref={ref}
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.21, delay: 3.9 }}
-              className="flex gap-x-2 pl-5 pt-25rem-20px"
+              className="flex h-fit gap-x-2 pl-5 pt-25rem-20px"
             >
               <div className=" w-8 h-8 p-[6px] rounded-full text-black bg-white flex items-center  justify-center">
                 <svg

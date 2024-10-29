@@ -1,9 +1,19 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import SectionContainer from "./share/SectionContainer";
 
-const PayAsYouGo: React.FC = () => {
+const PayAsYouGo: React.FC = ({
+  onInView,
+}: {
+  onInView: (isInView: boolean) => void;
+}) => {
+  // const ref = useRef(null);
+  // const isInView = useInView(ref);
+
+  // useEffect(() => {
+  //   onInView(true);
+  // }, [isInView, onInView]);
   const stats = [
     { value: "95%", label: "Less Upfront Cost" },
     { value: "3.7x", label: "Faster Return on Investment" },
@@ -11,7 +21,7 @@ const PayAsYouGo: React.FC = () => {
 
   return (
     <SectionContainer id="pay-as-you-go" className="bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div  className=" container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <motion.div
             initial={{ opacity: 0, x: -50 }}

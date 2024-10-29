@@ -1,16 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { animate, motion, useAnimation } from "framer-motion";
 import Sidebar from "./Sidebar";
 import { CgMenuRight } from "react-icons/cg";
 
-const Header = () => {
+const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
   console.log("piyawat header");
   const [lang, setLang] = useState("EN");
   const controls = useAnimation();
   const [theme, setTheme] = useState("dark");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const logoRef = useRef<HTMLDivElement>(null);
+  console.log("header", isLogoCenter);
+  const [isInitial, setIsInitial] = useState(true);
   useEffect(() => {
     const animateHeader = async () => {
       // Appear from top to bottom
@@ -29,6 +32,18 @@ const Header = () => {
 
     animateHeader();
   }, [controls]);
+  const handleMoveLogo = () => {
+    animate(logoRef.current, {
+      x: isLogoCenter ? "-50%" : "-120%",
+      transition: { duration: 1 },
+    });
+  };
+  useEffect(() => {
+    console.log("isLogoCenter", isLogoCenter);
+    if (!isInitial) {
+      handleMoveLogo();
+    }
+  }, [isLogoCenter, isInitial]);
 
   const circleVariants = {
     hidden: { pathLength: 0, opacity: 0 },
@@ -41,18 +56,18 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`flex fixed py-7  !w-full justify-between  px-5 sm:px-10 z-[9999999] transition-colors duration-[500ms]`}
+      className={` pointer-events-none flex   fixed py-7  !w-full justify-between  px-5 sm:px-10 z-[9999999] transition-colors duration-[500ms]`}
       initial={{ y: -50, opacity: 0 }}
       animate={controls}
       style={{
         color: theme === "light" ? "#000000" : "#ffffff",
       }}
     >
-      <div className="flex">
+      <div className="flex  pointer-events-auto">
         <div className=" flex group">
           <motion.div
             onClick={() => setIsSidebarOpen(true)}
-            className="transition-all  group-hover:bg-black group-hover:text-white py-1 px-4 rounded-[2rem] border-[1px] border-current"
+            className="transition-all   group-hover:bg-black group-hover:text-white py-1 px-4 rounded-[2rem] border-[1px] border-current"
           >
             Menu
           </motion.div>
@@ -67,10 +82,17 @@ const Header = () => {
         </motion.div>
       </div>
       <motion.div
+        ref={logoRef}
         className="flex gap-x-2 -translate-y-[50%] left-1/2 -translate-x-[50%] top-1/2  mx-auto items-center text-2xl font-semibold absolute "
         initial={{ x: "-50%", y: "-50%" }}
-        animate={{ x: "-120%", y: "-50%" }}
-        transition={{ duration: 0.33, delay: 3.82 }}
+        onLayoutAnimationComplete={() => {
+          console.log("onLayoutAnimationComplete");
+        }}
+        onAnimationComplete={(definition) => {
+          setIsInitial(false);
+        }}
+        animate={{ x: "-120%" }}
+        transition={{ duration: 0.33, delay: isInitial ? 3.82 : 0 }}
       >
         <div
           style={{
@@ -89,7 +111,7 @@ const Header = () => {
         </div>
         <p className="text-base font-semibold">Chinafy</p>
       </motion.div>
-      <div className="flex gap-2 ">
+      <div className="flex gap-2  pointer-events-auto ">
         {["EN", "TH"].map((language) => (
           <div
             key={language}

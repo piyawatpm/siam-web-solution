@@ -16,6 +16,7 @@ export default function Home() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll({ container: containerRef });
   const [currentSection, setCurrentSection] = useState(0);
+  const [isLogoCenter, setIsLogoCenter] = useState(false);
   const isMobile = useIsMobile();
   if (isMobile !== true && isMobile !== false) {
     console.log("loading", isMobile);
@@ -23,7 +24,10 @@ export default function Home() {
   }
   const sections = [
     { component: Hero, id: "hero" },
-    { component: PayAsYouGo, id: "pay-as-you-go" },
+    {
+      component: <PayAsYouGo onInView={setIsLogoCenter} />,
+      id: "pay-as-you-go",
+    },
     { component: Process, id: "process" },
     { component: Impact, id: "impact" },
     { component: Compare, id: "compare" },
@@ -80,17 +84,19 @@ export default function Home() {
   // }, [currentSection]);
 
   return (
-    <div className="h-screen overflow-hidden">
-      <Header />
-      <motion.div
-        ref={containerRef}
-        className="h-full overflow-y-scroll"
-        style={{ scrollSnapType: "y mandatory" }}
-      >
-        {sections.map(({ component: Section, id }, index) => (
+    <div className="h-screen overflow-scroll">
+      <Header isLogoCenter={isLogoCenter} />
+      <Hero onInView={setIsLogoCenter} />
+      <PayAsYouGo onInView={setIsLogoCenter} />
+      <Process />
+      <Impact />
+      <Compare />
+      <Plans />
+      <Testimonials />
+      <Contact />
+      {/* {sections.map(({ component: Section, id }, index) => (
           <Section key={id} />
-        ))}
-      </motion.div>
+        ))} */}
     </div>
   );
 }
