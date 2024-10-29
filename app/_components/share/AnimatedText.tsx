@@ -71,17 +71,17 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
           className="inline-block whitespace-nowrap mr-1 relative"
           variants={child}
         >
-          {word}
+          <p className=" relative z-10">{word}</p>
           {showHighlight && highlightWords.includes(word) && (
             <>
               <motion.span
-                className="absolute bottom-0 left-0 w-full  rounded-md h-full -z-10 bg-primary "
+                className="absolute bottom-0 left-0 w-full  rounded-md h-full z-[2] bg-primary "
                 variants={highlightVariants(false)}
                 initial="initial"
                 animate="animate"
               />
               <motion.span
-                className="absolute bottom-0 left-0  rounded-md h-full -z-20 bg-secondary "
+                className="absolute bottom-0 left-0  rounded-md h-full z-[1] bg-secondary "
                 variants={highlightVariants(true, 0.05)}
                 initial="initial"
                 animate="animate"

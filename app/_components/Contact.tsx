@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import SectionContainer from "./share/SectionContainer";
 import TagCloud from "./TagCloud";
+import Animated from "./Animated";
 
 const Contact: React.FC = () => {
   const controls = useAnimation();
@@ -206,7 +207,7 @@ const Contact: React.FC = () => {
             </motion.button>
           </div>
         </div>
-        <TagCloud />
+        <Animated />
         {/* <div className=" absolute text-center bottom-0  w-full bg-transparent translate-y-[40%]  ">
           <h3 className=" text-[300px] leading-[1em] font-bold text-white bg-transparent ">
             SIAM

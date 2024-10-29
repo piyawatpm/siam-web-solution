@@ -85,14 +85,14 @@ export default function Home() {
 
   return (
     <div className="h-screen overflow-scroll">
-      {/* <Header isLogoCenter={isLogoCenter} />
+      <Header isLogoCenter={isLogoCenter} />
       <Hero onInView={setIsLogoCenter} />
       <PayAsYouGo onInView={setIsLogoCenter} />
       <Process />
       <Impact />
       <Compare />
       <Plans />
-      <Testimonials /> */}
+      <Testimonials />
       <Contact />
       {/* {sections.map(({ component: Section, id }, index) => (
           <Section key={id} />
