@@ -53,29 +53,29 @@ const benefits = [
     description:
       "Display your authentic Thai cuisine or massage services with high-quality images and detailed descriptions.",
   },
-  {
-    icon: (
-      <svg
-        className="w-6 h-6 text-green-500 mr-2"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <motion.path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M5 13l4 4L19 7"
-          whileHover={{ scale: 1.2, rotate: 10 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        />
-      </svg>
-    ),
-    title: "Online Reservations and Booking",
-    description:
-      "Simplify the booking process for your customers with integrated reservation systems, increasing your booking rates.",
-  },
+  // {
+  //   icon: (
+  //     <svg
+  //       className="w-6 h-6 text-green-500 mr-2"
+  //       fill="none"
+  //       stroke="currentColor"
+  //       viewBox="0 0 24 24"
+  //       xmlns="http://www.w3.org/2000/svg"
+  //     >
+  //       <motion.path
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         strokeWidth={2}
+  //         d="M5 13l4 4L19 7"
+  //         whileHover={{ scale: 1.2, rotate: 10 }}
+  //         transition={{ type: "spring", stiffness: 300 }}
+  //       />
+  //     </svg>
+  //   ),
+  //   title: "Online Reservations and Booking",
+  //   description:
+  //     "Simplify the booking process for your customers with integrated reservation systems, increasing your booking rates.",
+  // },
   {
     icon: (
       <svg

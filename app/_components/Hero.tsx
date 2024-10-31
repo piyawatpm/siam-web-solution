@@ -125,7 +125,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                         />
                       </div>
                     </div>
-                    <StartButton className=" mt-5 w-fit" delay={1.7} />
+                    <StartButton className=" mt-5 w-fit" delay={0} />
                   </div>
                 </div>
                 <div className=" w-full h-[20rem]   mt-10 flex p-10 gap-x-5">
@@ -158,7 +158,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                       customers than those without one.
                     </p>
                   </motion.div>
-                  <motion.div
+                  {/* <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2, delay: 3.9 }}
@@ -179,7 +179,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
 
                     <p className=" font-normal text-[2rem]">10X</p>
                     <p>Grow with us</p>
-                  </motion.div>
+                  </motion.div> */}
 
                   {/* <div className=" w-12 h-12 rounded-full rounded-bl-none  bg-blue-500  z-50 absolute top-0 right-0"></div> */}
                 </div>

@@ -13,6 +13,7 @@ import PayAsYouGo from "./_components/PayAsYouGo";
 import useIsMobile from "./_hook/useIsMobile";
 import Process from "./_components/Process";
 import TextCarousel from "./_components/TextCarousel";
+import LoadingScreen from "./_components/LoadingScreen";
 export default function Home() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll({ container: containerRef });
@@ -35,21 +36,36 @@ export default function Home() {
   ];
 
   // In your component
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (isMobile !== true && isMobile !== false) {
-    console.log("loading", isMobile);
-    return <div>loading</div>;
+  useEffect(() => {
+    const minLoadTime = 1000; // 1 seconds minimum
+    const startTime = Date.now();
+
+    const checkLoadingComplete = () => {
+      const elapsedTime = Date.now() - startTime;
+      if (elapsedTime >= minLoadTime && isMobile !== undefined) {
+        setIsLoading(false);
+      }
+    };
+
+    const interval = setInterval(checkLoadingComplete, 100);
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
+  if (isLoading) {
+    return <LoadingScreen />;
   }
   const sections = [
-    { component: Hero, id: "hero" },
-    {
-      component: <PayAsYouGo onInView={setIsLogoCenter} />,
-      id: "pay-as-you-go",
-    },
-    { component: Process, id: "process" },
-    { component: Impact, id: "impact" },
+    // { component: Hero, id: "hero" },
+    // {
+    //   component: <PayAsYouGo onInView={setIsLogoCenter} />,
+    //   id: "pay-as-you-go",
+    // },
+    // { component: Process, id: "process" },
+    // { component: Impact, id: "impact" },
     { component: Compare, id: "compare" },
-    { component: Plans, id: "plans" },
+    // { component: Plans, id: "plans" },
     { component: Testimonials, id: "testimonials" },
     { component: Contact, id: "contact" },
   ];
@@ -103,9 +119,9 @@ export default function Home() {
 
   return (
     <div className="h-screen overflow-scroll">
-      <Header isLogoCenter={isLogoCenter} />
+      {/* <Header isLogoCenter={isLogoCenter} />
       <Hero onInView={setIsLogoCenter} />
-      <PayAsYouGo />
+      <PayAsYouGo /> */}
       {/* <Process /> */}
       <Impact />
       <TextCarousel texts={texts} />

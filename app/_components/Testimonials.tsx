@@ -11,6 +11,32 @@ interface TestimonialProps {
   image?: string;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 const testimonials: TestimonialProps[] = [
   {
     name: "Michela Nalin",
@@ -73,25 +99,27 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
   image,
 }) => (
   <motion.div
-    className=" h-[17.5rem] text-black group rounded-3xl relative overflow-visible"
+    className=" h-[23.5rem] text-black group rounded-3xl relative overflow-visible"
     initial="initial"
     animate="initial"
     whileHover="animate"
     transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
   >
     <motion.div
-      className="rounded-3xl   p-6 relative z-10 h-full bg-gray-100"
+      className="rounded-3xl flex flex-col   p-6 relative z-10 h-full bg-gray-100"
       variants={cover}
       transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
     >
-      <h3 className="text-xl font-semibold mb-1">{name}</h3>
-      <p className="text-black text-sm mb-4">{role}</p>
+      <h3 className="text-2xl font-semibold mb-1">{name}</h3>
+      <p className=" text-sm mb-4 text-gray-400">{role}</p>
+      <p className=" mt-auto">{testimonial}</p>
     </motion.div>
     <motion.div
       variants={testimonialVariants}
       transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
-      className=" rounded-3xl  shadow-lg  absolute inset-0 w-full z-0 h-full  bg-gray-100 "
+      className=" rounded-3xl  overflow-hidden  shadow-lg  absolute inset-0 w-full z-0 h-full  bg-gray-100 "
     >
+      <img src="/images/pp2.jpg" alt="" />
       {/* <p className="text-white">{testimonial}</p> */}
     </motion.div>
   </motion.div>

@@ -7,16 +7,16 @@ const pricingPlans = [
     name: "Starter",
     description:
       "Best for Squarespace or Shopify template-based websites with 10 or fewer pages.",
-    monthlyPrice: 350,
-    yearlyPrice: 3500,
+    monthlyPrice: 0,
+    yearlyPrice: 0,
     color: "bg-purple-100",
   },
   {
     name: "Pro+",
     description:
       "For more robust websites: custom sites, sites requiring login or live streaming, or Shopify Plus.",
-    monthlyPrice: 550,
-    yearlyPrice: 5500,
+    monthlyPrice: 0,
+    yearlyPrice: 0,
     color: "bg-gray-100",
     isBlur: true,
   },

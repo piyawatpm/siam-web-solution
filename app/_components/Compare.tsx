@@ -141,35 +141,6 @@ const Compare: React.FC = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Final Impact Statement and CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-12 text-center"
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">
-            400% Increase in Sales!
-          </h3>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Our web solutions not only enhance your online presence but also
-            significantly boost your sales. Let us help you achieve similar
-            results for your business.
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onClick={() => {
-              // Handle CTA action, e.g., navigate to contact form
-              window.location.href = "#contact";
-            }}
-          >
-            Get Started Now
-          </motion.button>
-        </motion.div>
       </div>
     </SectionContainer>
   );
