@@ -10,6 +10,7 @@ import CustomButton from "./share/CustomButton";
 import { MdAttachMoney } from "react-icons/md";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import StartButton from "./share/startButton";
+import Arrow from "./share/Arrow";
 
 const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
   onInView,
@@ -127,26 +128,60 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                     <StartButton className=" mt-5 w-fit" delay={1.7} />
                   </div>
                 </div>
-                <div className=" w-full h-[20rem]  border mt-10 flex">
-                  <div className=" ml-auto rounded-2xl flex flex-col p-1   h-fit w-fit relative">
-                    <div className=" w-12 h-12 rounded-full bg-blue-500 z-50 absolute top-3 right-0"></div>
+                <div className=" w-full h-[20rem]   mt-10 flex p-10 gap-x-5">
+                  {/* <div className=" flex  flex-col rounded-2xl border-[1px] border-[#EDEFF3] bg-[#FBFCFC]  p-5 pt-10">
+                    <Arrow className=" absolute top-0 right-0" />
+                    <div className=" w-8 h-8 rounded-full   bg-white p-[1px]">
+                      <div className=" bg-black w-full h-full rounded-full"></div>
+                    </div>
+                    <div className=" w-8 h-8 rounded-full   bg-white translate-x-[50%] p-[1px]">
+                      <div className=" bg-black w-full h-full rounded-full"></div>
+                    </div>
+                    <div className=" w-8 h-8 rounded-full   bg-white translate-x-[100%] p-[1px]">
+                      <div className=" bg-black w-full h-full rounded-full"></div>
+                    </div>
 
-                    <div className=" flex bg-red-500 relative w-3/4 h-12 rounded-t-2xl translate-y-[10px] p-2">
-                      <div className=" w-8 h-8 rounded-full absolute  top-2 left-2 bg-white p-[1px]">
-                        <div className=" bg-black w-full h-full rounded-full"></div>
+                    <p>
+                      Businesses with a website are likely to reach 55% more
+                      customers than those without one.
+                    </p>
+                  </div> */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: 3.9 }}
+                    className=" flex  group relative  h-fit flex-col rounded-2xl border-[1px] border-[#EDEFF3] bg-[#FBFCFC]  p-5 "
+                  >
+                    <Arrow className=" !absolute top-0 right-0 !translate-x-[50%] !translate-y-[-50%]" />
+                    <p>
+                      Businesses with a website are likely to reach 55% more
+                      customers than those without one.
+                    </p>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: 3.9 }}
+                    className=" flex group ml-auto relative  h-fit flex-col rounded-2xl border-[1px] border-[#EDEFF3] bg-[#FBFCFC]  p-5 "
+                  >
+                    <Arrow className=" !absolute top-0 right-0 !translate-x-[50%] !translate-y-[-50%]" />
+                    <div className=" flex ">
+                      <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white p-[1px]">
+                        <img className=" cover" src="/images/pp1.png" alt="" />
                       </div>
-                      <div className=" w-8 h-8 rounded-full absolute  top-2 left-2 bg-white translate-x-[50%] p-[1px]">
-                        <div className=" bg-black w-full h-full rounded-full"></div>
+                      <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white translate-x-[-50%] p-[1px]">
+                        <img className=" cover" src="/images/pp2.jpg" alt="" />
                       </div>
-                      <div className=" w-8 h-8 rounded-full absolute  top-2 left-2 bg-white translate-x-[100%] p-[1px]">
-                        <div className=" bg-black w-full h-full rounded-full"></div>
+                      <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white translate-x-[-100%] p-[1px]">
+                        <img className=" cover" src="/images/pp3.jpg" alt="" />
                       </div>
                     </div>
-                    <div className=" flex flex-col rounded-2xl rounded-tl-none bg-red-500 p-2">
-                      <p className=" font-normal text-[2rem]">10X</p>
-                      <p>Grow with us</p>
-                    </div>
-                  </div>
+
+                    <p className=" font-normal text-[2rem]">10X</p>
+                    <p>Grow with us</p>
+                  </motion.div>
+
+                  {/* <div className=" w-12 h-12 rounded-full rounded-bl-none  bg-blue-500  z-50 absolute top-0 right-0"></div> */}
                 </div>
               </div>
             </motion.div>

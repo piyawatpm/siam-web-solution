@@ -109,7 +109,7 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
             S
           </span>
         </div>
-        <p className="text-base font-semibold">Chinafy</p>
+        <p className="text-base font-semibold">SSolution</p>
       </motion.div>
       <div className="flex gap-2  pointer-events-auto ">
         {["EN", "TH"].map((language) => (

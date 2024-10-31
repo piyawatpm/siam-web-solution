@@ -35,7 +35,9 @@ const tags = [
 if (typeof window !== "undefined") {
   window.decomp = require("poly-decomp");
 }
-
+const scaledLetter = [letterS, letterI, letterA, letterM].map((letter) =>
+  Vertices.scale(letter, 1.8, 1.8)
+);
 const Animated: React.FC = () => {
   // Ref for the canvas container
 
@@ -68,22 +70,23 @@ const Animated: React.FC = () => {
   // Initialize Matter.js and set up the scene
   useEffect(() => {
     if (isInView) {
-      initializeMatter();
+      initializeMatter(scaledLetter);
+      console.log("render.current 1", render.current);
     }
 
     // Optional: Add mouse move listener
     // window.addEventListener("mousemove", updateMousePosition);
 
     // // Cleanup on unmount
-    // return () => {
-    //   clearMatter();
-    //   window.removeEventListener("mousemove", updateMousePosition);
-    // };
+    return () => {
+      clearMatter();
+      // window.removeEventListener("mousemove", updateMousePosition);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
   // Function to initialize Matter.js
-  const initializeMatter = () => {
+  const initializeMatter = (scaledLetter: any) => {
     console.log("initializeMatter");
     if (!canvasRef.current) return;
 
@@ -184,23 +187,22 @@ const Animated: React.FC = () => {
     ];
 
     // Additional shapes (letters and triangle)
-    const additionalBodies = createAdditionalBodies();
+    const additionalBodies = createAdditionalBodies(scaledLetter, height);
 
     // Add all bodies to the world
     World.add(engine.current.world, [
       ...boundaries,
-      // ...hexagons,
-      // ...additionalBodies.verTexts,
-      // additionalBodies.triangle,
+      ...hexagons,
+      ...additionalBodies.verTexts,
+      additionalBodies.triangle,
     ]);
   };
 
   // Function to create additional bodies (letters and triangle)
-  const createAdditionalBodies = () => {
+  const createAdditionalBodies = (scaledLetter, height) => {
     const verTexts: Body[] = [];
 
-    [letterS, letterI, letterA, letterM].forEach((verticesPath, index) => {
-      const scaled = Vertices.scale(verticesPath, 1.4, 1.4);
+    scaledLetter.forEach((scaled, index) => {
       let extraSpace = 0;
       switch (index) {
         case 1:
@@ -218,7 +220,7 @@ const Animated: React.FC = () => {
 
       const body = Bodies.fromVertices(
         200 + index * 300 + extraSpace,
-        900, // Starting below the canvas
+        height + 10, // Starting below the canvas
         scaled,
         {
           isStatic: true,
@@ -237,7 +239,7 @@ const Animated: React.FC = () => {
     // Create a large white triangle
     const triangle = Bodies.fromVertices(
       820,
-      850,
+      height + 10,
       Vertices.fromPath("M 0 0 L 80 0 L 40 -80 z"),
       {
         isStatic: true,
@@ -260,6 +262,7 @@ const Animated: React.FC = () => {
     console.log("clearMatter");
     if (render.current) {
       Render.stop(render.current);
+      console.log("render.current", render.current);
       render.current.canvas.remove();
       render.current.textures = {};
     }
