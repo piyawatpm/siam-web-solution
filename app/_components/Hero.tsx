@@ -167,7 +167,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                     <Arrow className=" !absolute top-0 right-0 !translate-x-[50%] !translate-y-[-50%]" />
                     <div className=" flex ">
                       <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white p-[1px]">
-                        <img className=" cover" src="/images/pp1.png" alt="" />
+                        <img className=" cover" src="/images/pp2.jpg" alt="" />
                       </div>
                       <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white translate-x-[-50%] p-[1px]">
                         <img className=" cover" src="/images/pp2.jpg" alt="" />
