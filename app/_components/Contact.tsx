@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import SectionContainer from "./share/SectionContainer";
-import TagCloud from "./TagCloud";
+
 import Animated from "./Animated";
 
 const Contact: React.FC = () => {
@@ -56,18 +56,19 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className=" text-center mb-12"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-4">
-            Make Your Website Work
+            Transform Your Digital Presence
             <br />
-            <span className="bg-yellow-200 px-2">In China</span>
+            <span className="bg-yellow-200 px-2">
+              With Expert Web Solutions
+            </span>
           </h2>
           <p className="text-gray-600 mt-4">
-            Enter in a few details and one of our Chinafy team members will
-            reach
+            Share your vision with us and let our team of expert developers
             <br />
-            out to you shortly with a plan and next steps to 'Go Live' in China.
+            craft the perfect digital solution for your business.
           </p>
         </motion.div>
 
@@ -78,69 +79,70 @@ const Contact: React.FC = () => {
           onSubmit={handleSubmit}
           className="space-y-8  bg-white p-8 rounded-3xl"
         >
-          <div className="flex items-baseline ">
-            <label htmlFor="name" className="text-2xl font-semibold mr-2">
-              Hi! I am
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
-              placeholder="Your Name"
-              required
-            />
-            <span className="text-2xl ml-1">.</span>
+          <div className="flex flex-col space-y-4">
+            <div className="flex items-baseline">
+              <label htmlFor="name" className="text-2xl font-semibold mr-2">
+                Hi! I am
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
+                placeholder="Your Name"
+                required
+              />
+              <span className="text-2xl ml-1">.</span>
+            </div>
+            <div className="flex items-baseline">
+              <label htmlFor="phone" className="text-2xl font-semibold mr-2">
+                My Phone Number is
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
+                placeholder="Your Phone Number"
+                required
+              />
+            </div>
+            <div className="flex items-baseline">
+              <label htmlFor="email" className="text-2xl font-semibold mr-2">
+                My Email is
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
+                placeholder="Your Email"
+                required
+              />
+            </div>
           </div>
 
-          <div className="flex items-baseline">
-            <label htmlFor="email" className="text-2xl font-semibold mr-2">
-              My work email address is
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
-              placeholder="your@email.com"
-              required
-            />
-            <span className="text-2xl ml-1">.</span>
-          </div>
-
-          <div className="flex items-baseline">
+          <div className="flex items-baseline flex-col">
             <label htmlFor="role" className="text-2xl font-semibold mr-2">
-              My company role can be described as
+              My enquiry is about
             </label>
-            <input
-              type="text"
-              id="role"
-              name="role"
-              value={formData.role}
+            <textarea
+              id="enquiry"
+              name="enquiry"
+              value={formData.enquiry}
               onChange={handleChange}
-              className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
-              placeholder="Your Role"
-              required
-            />
-            <span className="text-2xl ml-1">.</span>
-          </div>
-
-          <div className="flex items-baseline">
-            <label htmlFor="website" className="text-2xl font-semibold mr-2">
-              I want to Chinafy my website
-            </label>
-            <input
-              type="url"
-              id="website"
-              name="website"
-              value={formData.website}
-              onChange={handleChange}
-              className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
-              placeholder="www.yourwebsite.com"
+              className={`
+                flex-grow p-2 border-b-2 border-gray-300 
+                focus:border-purple-500 outline-none 
+                bg-transparent text-2xl w-full h-24
+              `}
+              placeholder="Your enquiry"
               required
             />
             <span className="text-2xl ml-1">.</span>
@@ -191,10 +193,10 @@ const Contact: React.FC = () => {
           </div>
         </div> */}
           <div className="text-4xl flex flex-col md:text-5xl font-bold text-center  text-black">
-            <p>Faster</p>
-            <p>Fuller</p>
-            <p>Website Delivery</p>
-            <p>For China</p>
+            <p>Modern</p>
+            <p>Responsive</p>
+            <p>Custom Websites</p>
+            <p>For Your Business</p>
           </div>
 
           <div className="mt-12 text-center">

@@ -12,12 +12,30 @@ import Compare from "./_components/Compare";
 import PayAsYouGo from "./_components/PayAsYouGo";
 import useIsMobile from "./_hook/useIsMobile";
 import Process from "./_components/Process";
+import TextCarousel from "./_components/TextCarousel";
 export default function Home() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll({ container: containerRef });
   const [currentSection, setCurrentSection] = useState(0);
   const [isLogoCenter, setIsLogoCenter] = useState(false);
   const isMobile = useIsMobile();
+  // Example usage
+  const texts = [
+    "APP",
+    "/",
+    "WEBSITES",
+    "/",
+    "MARKETING",
+    "/",
+    "SEO",
+    "/",
+    "BRANDING",
+    "/",
+    "AI",
+  ];
+
+  // In your component
+
   if (isMobile !== true && isMobile !== false) {
     console.log("loading", isMobile);
     return <div>loading</div>;
@@ -87,9 +105,11 @@ export default function Home() {
     <div className="h-screen overflow-scroll">
       <Header isLogoCenter={isLogoCenter} />
       <Hero onInView={setIsLogoCenter} />
-      <PayAsYouGo onInView={setIsLogoCenter} />
-      <Process />
+      <PayAsYouGo />
+      {/* <Process /> */}
       <Impact />
+      <TextCarousel texts={texts} />
+
       <Compare />
       <Plans />
       <Testimonials />

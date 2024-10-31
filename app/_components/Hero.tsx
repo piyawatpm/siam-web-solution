@@ -9,6 +9,7 @@ import useIsMobile from "../_hook/useIsMobile";
 import CustomButton from "./share/CustomButton";
 import { MdAttachMoney } from "react-icons/md";
 import { AiOutlineDollarCircle } from "react-icons/ai";
+import StartButton from "./share/startButton";
 
 const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
   onInView,
@@ -79,50 +80,75 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
           }}
           className=" flex-1 !pr-0 flex items-center justify-center flex-col gap-y-1 z-10  absolute bg-transparent  inset-0"
         >
-          <motion.div className=" w-full h-full bg-white">
-            <motion.div className="h-full flex  flex-col pl-5 sm:pl-10  justify-center mr-auto sm:w-1/2 s overflow-hidden">
+          <motion.div className=" w-full h-full bg-white flex px-5 sm:px-10">
+            <motion.div className="h-full flex  flex-col   justify-center mr-auto sm:w-1/2  overflow-hidden">
               <div className=" absolute top-3 left-3">
                 <MovingText text="Quality" />
               </div>
-              <div className=" flex flex-col text-start">
-                <AnimatedText
-                  text="Your Website is the"
-                  className=" !font-medium text-[2rem] mb-3"
-                  delay={3.5}
-                />
+              <div className=" w-full h-full flex flex-col justify-end py-4">
+                <div className=" flex flex-col ">
+                  <div className=" flex flex-col text-start ">
+                    <AnimatedText
+                      text="Your Website is the"
+                      className=" !font-medium text-[2rem] mb-3"
+                      delay={3.5}
+                    />
 
-                <AnimatedText
-                  className=" !font-medium text-[4rem] mb-3"
-                  text="DigitalDoor"
-                  highlightWords={["DigitalDoor"]}
-                  delay={3.6}
-                />
+                    <AnimatedText
+                      className=" !font-medium text-[4rem] mb-3"
+                      text="DigitalDoor"
+                      highlightWords={["DigitalDoor"]}
+                      delay={3.6}
+                    />
 
-                <AnimatedText
-                  className=" !font-medium text-[2rem]"
-                  text="to Your Store"
-                  delay={3.7}
-                />
-              </div>
-              <div className="flex flex-col text-start mt-4">
-                <div className="h-fit w-fit overflow-y-hidden ">
-                  <AnimatedText
-                    className=" !font-medium text-[1rem]"
-                    text="Connecting the world's largest companies"
-                    delay={3.7}
-                  />
+                    <AnimatedText
+                      className=" !font-medium text-[2rem]"
+                      text="to Your Store"
+                      delay={3.7}
+                    />
+                  </div>
+                  <div className=" w-full flex items-center justify-between pr-5 sm:pr-10">
+                    <div className="flex flex-col text-start mt-4">
+                      <div className="h-fit w-fit overflow-y-hidden ">
+                        <AnimatedText
+                          className=" !font-medium text-[1rem]"
+                          text="Unlock Your Digital Potential"
+                          delay={3.7}
+                        />
+                      </div>
+                      <div className="h-fit w-fit overflow-y-hidden  ">
+                        <AnimatedText
+                          className=" !font-medium text-[1rem]"
+                          text="with Cutting-Edge Solutions"
+                          delay={3.7}
+                        />
+                      </div>
+                    </div>
+                    <StartButton className=" mt-5 w-fit" delay={1.7} />
+                  </div>
                 </div>
-                <div className="h-fit w-fit overflow-y-hidden  ">
-                  <AnimatedText
-                    className=" !font-medium text-[1rem]"
-                    text="with the largest market"
-                    delay={3.7}
-                  />
+                <div className=" w-full h-[20rem]  border mt-10 flex">
+                  <div className=" ml-auto rounded-2xl flex flex-col p-1   h-fit w-fit relative">
+                    <div className=" w-12 h-12 rounded-full bg-blue-500 z-50 absolute top-3 right-0"></div>
+
+                    <div className=" flex bg-red-500 relative w-3/4 h-12 rounded-t-2xl translate-y-[10px] p-2">
+                      <div className=" w-8 h-8 rounded-full absolute  top-2 left-2 bg-white p-[1px]">
+                        <div className=" bg-black w-full h-full rounded-full"></div>
+                      </div>
+                      <div className=" w-8 h-8 rounded-full absolute  top-2 left-2 bg-white translate-x-[50%] p-[1px]">
+                        <div className=" bg-black w-full h-full rounded-full"></div>
+                      </div>
+                      <div className=" w-8 h-8 rounded-full absolute  top-2 left-2 bg-white translate-x-[100%] p-[1px]">
+                        <div className=" bg-black w-full h-full rounded-full"></div>
+                      </div>
+                    </div>
+                    <div className=" flex flex-col rounded-2xl rounded-tl-none bg-red-500 p-2">
+                      <p className=" font-normal text-[2rem]">10X</p>
+                      <p>Grow with us</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <CustomButton className=" w-fit font-bold mt-5">
-                Get Started
-              </CustomButton>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -272,17 +298,17 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
       </motion.div>
       {/* Add your hero content here */}
       {/* footer */}
-      <div className="absolute bottom-3    z-10 px-5 sm:px-10 w-full flex justify-between ">
+      <div className="absolute bottom-5    z-10 px-5 sm:px-10 w-full flex justify-between ">
         <AnimatedText
           big
           delay={0.4}
-          className="!text-white text-[5rem] h-[5rem] leading-[1em] w-[350px]"
+          className="!text-white text-[5rem] h-[5.5rem] leading-[1em] w-[350px]"
           text="Loading"
         />
         <AnimatedText
           big
           delay={0.4}
-          className="!text-white sm:block text-end hidden text-[5rem] h-[5rem] leading-[1em] w-[350px] justify-end"
+          className="!text-white sm:block text-end hidden text-[5rem] h-[5.5rem] leading-[1em] w-[350px] justify-end"
           text="Dream"
         />
       </div>

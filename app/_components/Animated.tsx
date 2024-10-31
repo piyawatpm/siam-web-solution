@@ -17,26 +17,24 @@ import "tailwindcss/tailwind.css"; // If you're using TailwindCSS
 
 // Define your tags
 const tags = [
-  "CAREERS",
+  "FAST",
   "PRODUCTS",
   "SERVICES",
   "INFORMATION",
   "RESOURCES",
   "SOLUTIONS",
   "PRICING",
-  "ABOUT",
-  "CONTACT",
-  "TEAM",
+  "CREATIVE",
+  "ENGAGEMENT",
+  "FEATURED",
+  "BUDGET",
+  "PAYG",
 ];
 
-declare global {
-  interface Window {
-    decomp: any;
-  }
-}
-
 // Initialize poly-decomp for Matter.js
-window.decomp = require("poly-decomp");
+if (typeof window !== "undefined") {
+  window.decomp = require("poly-decomp");
+}
 
 const Animated: React.FC = () => {
   // Ref for the canvas container
@@ -52,7 +50,7 @@ const Animated: React.FC = () => {
     Engine.create({
       gravity: {
         x: 0,
-        y: 0.1, // Adjust gravity as needed
+        y: 0.3, // Adjust gravity as needed
       },
     })
   );
@@ -74,13 +72,13 @@ const Animated: React.FC = () => {
     }
 
     // Optional: Add mouse move listener
-    window.addEventListener("mousemove", updateMousePosition);
+    // window.addEventListener("mousemove", updateMousePosition);
 
-    // Cleanup on unmount
-    return () => {
-      clearMatter();
-      window.removeEventListener("mousemove", updateMousePosition);
-    };
+    // // Cleanup on unmount
+    // return () => {
+    //   clearMatter();
+    //   window.removeEventListener("mousemove", updateMousePosition);
+    // };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
@@ -191,9 +189,9 @@ const Animated: React.FC = () => {
     // Add all bodies to the world
     World.add(engine.current.world, [
       ...boundaries,
-      ...hexagons,
-      ...additionalBodies.verTexts,
-      additionalBodies.triangle,
+      // ...hexagons,
+      // ...additionalBodies.verTexts,
+      // additionalBodies.triangle,
     ]);
   };
 
@@ -275,14 +273,14 @@ const Animated: React.FC = () => {
   };
 
   // Function to update mouse position (optional)
-  const updateMousePosition = (event: MouseEvent) => {
-    if (!canvasRef.current) return;
-    posX.current =
-      event.clientX - canvasRef.current.getBoundingClientRect().left;
-    posY.current =
-      event.clientY - canvasRef.current.getBoundingClientRect().top;
-    // You can use posX and posY for interactivity if needed
-  };
+  // const updateMousePosition = (event: MouseEvent) => {
+  //   if (!canvasRef.current) return;
+  //   posX.current =
+  //     event.clientX - canvasRef.current.getBoundingClientRect().left;
+  //   posY.current =
+  //     event.clientY - canvasRef.current.getBoundingClientRect().top;
+  //   // You can use posX and posY for interactivity if needed
+  // };
 
   // JSX Structure
   return (
