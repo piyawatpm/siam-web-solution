@@ -35,7 +35,7 @@ const StartButton = ({
       }}
     >
       <div className="bg-red-50 group-hover:left-[300] absolute -left-[32px] -top-[8px] h-[64px] w-[4px] rotate-45 blur-md transition-all duration-700 ease-in-out group-hover:left-[460px]"></div>
-      Let's Discuss
+      Let s Discuss
     </motion.button>
   );
 };

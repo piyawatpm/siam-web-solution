@@ -56,9 +56,9 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [isMobile]);
 
-  // if (isLoading) {
-  //   return <LoadingScreen />;
-  // }
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
   const sections = [
     // { component: Hero, id: "hero" },
     // {
@@ -124,7 +124,8 @@ export default function Home() {
     <div className="h-screen overflow-scroll">
       <Header isLogoCenter={isLogoCenter} />
       <Hero onInView={setIsLogoCenter} />
-      <PayAsYouGo />
+      {/* <PayAsYouGo /> */}
+
       <Services />
       <Impact />
       <TextCarousel texts={texts} />

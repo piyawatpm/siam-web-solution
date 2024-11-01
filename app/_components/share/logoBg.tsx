@@ -1,4 +1,4 @@
-const LogoBg = () => {
+const LogoBg = ({ color = "#EEEBF6" }: { color: string }) => {
   return (
     <div className=" absolute inset-0 w-full h-full z-[1] ">
       <svg
@@ -11,10 +11,10 @@ const LogoBg = () => {
           stroke-linecap="round"
           fill-rule="evenodd"
           font-size="20pt"
-          stroke="#EEEBF6"
+          stroke={color}
           className=" rotate-[20deg]"
           stroke-width="1.75mm"
-          fill="#EEEBF6"
+          fill={color}
           // style="stroke:#000;stroke-width:0.25mm;fill:#000"
         >
           <path

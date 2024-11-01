@@ -4,6 +4,7 @@ import { useRef } from "react";
 import SectionContainer from "./share/SectionContainer";
 import AnimatedText from "./share/AnimatedText";
 import Arrow from "./share/Arrow";
+import LogoBg from "./share/logoBg";
 
 const pricingPlans = [
   {
@@ -141,9 +142,10 @@ const PricingPlans: React.FC = () => {
               variants={cardVariants}
               className={`rounded-3xl p-6 ${plan.color} ${
                 plan.isBlur ? "!backdrop-blur-sm !opacity-20" : ""
-              } transition-all  min-h-[25rem] flex flex-col  duration-300 hover:scale-105 group`}
+              } transition-all relative  min-h-[25rem] flex flex-col  duration-300 hover:scale-105 group`}
             >
-              <div className="mx-auto text-black border border-black rounded-full  py-2 w-[5rem] text-center mb-4">
+              <LogoBg color="white" />
+              <div className="mx-auto relative z-20 text-black border border-black rounded-full  py-2 w-[5rem] text-center mb-4">
                 <AnimatePresence mode="wait">
                   {isAnnual ? (
                     <motion.p
@@ -168,7 +170,7 @@ const PricingPlans: React.FC = () => {
                   )}
                 </AnimatePresence>
               </div>
-              <div className=" flex flex-col gap-y-4 my-auto">
+              <div className=" flex relative z-20 flex-col gap-y-4 my-auto">
                 {" "}
                 <h2 className="text-2xl sm:text-5xl font-medium mb-4 text-center text-black">
                   {plan.name}
@@ -178,7 +180,7 @@ const PricingPlans: React.FC = () => {
                 </p>
               </div>
 
-              <div className="flex items-center justify-between mt-auto">
+              <div className="flex relative z-20 items-center justify-between mt-auto">
                 {plan.monthlyPrice ? (
                   <div className="text-xl sm:text-2xl font-medium text-black rounded-full px-5 py-4 bg-white">
                     ${isAnnual ? plan.yearlyPrice : plan.monthlyPrice}

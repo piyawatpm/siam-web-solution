@@ -56,7 +56,27 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
 
   return (
     <motion.header
-      className={` pointer-events-none flex   fixed py-7   !w-full justify-between  px-5 sm:px-10 z-[9999999] transition-colors duration-[500ms]`}
+      className={`
+      pointer-events-none 
+      fixed 
+      flex 
+      w-full 
+      justify-between 
+      py-7 
+      px-5 
+      sm:px-10 
+      z-[9999999] 
+      transition-colors 
+      duration-[500ms]
+      bg-white/50
+      transform-gpu
+      will-change-transform
+      supports-[backdrop-filter]:bg-white/50
+      supports-[backdrop-filter]:backdrop-blur-xl
+      supports-[backdrop-filter]:backdrop-saturate-[160%]
+      supports-[backdrop-filter]:backdrop-contrast-[45%]
+      supports-[backdrop-filter]:backdrop-brightness-[140%]
+    `}
       initial={{ y: -50, opacity: 0 }}
       animate={controls}
       style={{
