@@ -24,7 +24,7 @@ const StartButton = ({
         boxShadow:
           "rgba(48, 49, 51, 0.03) 0px 4px 4px 0px, rgba(20, 20, 20, 0.5) 0px 0px 8px 1px inset",
         opacity: 1,
-        padding: "14px 20px 14px 20px",
+        padding: "10px 20px 10px 20px",
       }}
       onClick={() => {
         // Handle CTA action, e.g., navigate to contact form with smooth scroll

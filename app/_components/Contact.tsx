@@ -3,6 +3,9 @@ import { motion, useAnimation } from "framer-motion";
 import SectionContainer from "./share/SectionContainer";
 
 import Animated from "./Animated";
+import AnimatedText from "./share/AnimatedText";
+import StartButton from "./share/startButton";
+import LogoBg from "./share/logoBg";
 
 const Contact: React.FC = () => {
   const controls = useAnimation();
@@ -50,26 +53,37 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <SectionContainer id="contact" className=" bg-primary/30 flex flex-col">
-      <div className="max-w-4xl  mx-auto px-4 pt-16  ">
+    <SectionContainer
+      id="contact"
+      className=" bg-white flex flex-col !pb-0 relative"
+    >
+      <div className=" w-full mx-auto px-4 pt-16 text-center min-h-[80vh] flex flex-col justify-center items-center relative ">
+        <LogoBg />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">
-            Transform Your Digital Presence
-            <br />
-            <span className="bg-yellow-200 px-2">
-              With Expert Web Solutions
-            </span>
-          </h2>
-          <p className="text-gray-600 mt-4">
-            Share your vision with us and let our team of expert developers
-            <br />
-            craft the perfect digital solution for your business.
-          </p>
+          <AnimatedText
+            className=" text-5xl font-bold mb-4"
+            text="Transform Your Digital Presence"
+          />
+          <AnimatedText
+            className=" text-5xl font-bold mb-4 !text-center !justify-center"
+            text="With Expert WebSolutions"
+            highlightWords={["WebSolutions"]}
+          />
+
+          <AnimatedText
+            className="text-gray-600  !text-base items-center justify-center"
+            text="Share your vision with us and let our team of expert developers"
+          />
+
+          <AnimatedText
+            className="text-gray-600  !text-base items-center justify-center"
+            text="craft the perfect digital solution for your business."
+          />
         </motion.div>
 
         <motion.form
@@ -77,7 +91,7 @@ const Contact: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
           onSubmit={handleSubmit}
-          className="space-y-8  bg-white p-8 rounded-3xl"
+          className="space-y-8  bg-white p-8 rounded-3xl relative flex flex-col z-10"
         >
           <div className="flex flex-col space-y-4">
             <div className="flex items-baseline">
@@ -90,7 +104,7 @@ const Contact: React.FC = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
+                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-secondary outline-none bg-transparent text-2xl"
                 placeholder="Your Name"
                 required
               />
@@ -106,7 +120,7 @@ const Contact: React.FC = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
+                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-secondary outline-none bg-transparent text-2xl"
                 placeholder="Your Phone Number"
                 required
               />
@@ -121,7 +135,7 @@ const Contact: React.FC = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-purple-500 outline-none bg-transparent text-2xl"
+                className="flex-grow p-2 border-b-2 border-gray-300 focus:border-secondary outline-none bg-transparent text-2xl"
                 placeholder="Your Email"
                 required
               />
@@ -139,13 +153,12 @@ const Contact: React.FC = () => {
               onChange={handleChange}
               className={`
                 flex-grow p-2 border-b-2 border-gray-300 
-                focus:border-purple-500 outline-none 
+                focus:border-secondary outline-none 
                 bg-transparent text-2xl w-full h-24
               `}
               placeholder="Your enquiry"
               required
             />
-            <span className="text-2xl ml-1">.</span>
           </div>
 
           {/* <motion.button
@@ -158,7 +171,7 @@ const Contact: React.FC = () => {
           </motion.button> */}
         </motion.form>
       </div>
-      <div className=" bg-primary  !min-h-[80vh]   flex flex-col rounded-t-[4.25rem]  relative overflow-hidden  w-full">
+      <div className=" bg-primary  !min-h-[80vh]   flex flex-col rounded-t-[5.25rem]  relative overflow-hidden  w-full">
         <div className="container  w-fit  relative z-20   flex-1 mx-auto px-4 flex flex-col justify-center items-center mb-24">
           {/* <div className="flex justify-end mb-4">
           <div className="flex space-x-2">
@@ -200,13 +213,7 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-black text-white px-6 py-3 rounded-lg text-lg font-semibold"
-            >
-              Get Started
-            </motion.button>
+            <StartButton className="w-fit" delay={0} />
           </div>
         </div>
         <Animated />

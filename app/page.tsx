@@ -14,6 +14,7 @@ import useIsMobile from "./_hook/useIsMobile";
 import Process from "./_components/Process";
 import TextCarousel from "./_components/TextCarousel";
 import LoadingScreen from "./_components/LoadingScreen";
+import Services from "./_components/Services";
 export default function Home() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll({ container: containerRef });
@@ -39,12 +40,13 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const minLoadTime = 1000; // 1 seconds minimum
+    const minLoadTime = 2200; // 1 seconds minimum
     const startTime = Date.now();
 
     const checkLoadingComplete = () => {
       const elapsedTime = Date.now() - startTime;
       if (elapsedTime >= minLoadTime && isMobile !== undefined) {
+        console.log("loading complete");
         setIsLoading(false);
       }
     };
@@ -53,9 +55,10 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [isMobile]);
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
+
+  // if (isLoading) {
+  //   return <LoadingScreen />;
+  // }
   const sections = [
     // { component: Hero, id: "hero" },
     // {
@@ -119,16 +122,16 @@ export default function Home() {
 
   return (
     <div className="h-screen overflow-scroll">
-      {/* <Header isLogoCenter={isLogoCenter} />
+      <Header isLogoCenter={isLogoCenter} />
       <Hero onInView={setIsLogoCenter} />
-      <PayAsYouGo /> */}
-      {/* <Process /> */}
+      <PayAsYouGo />
+      <Services />
       <Impact />
       <TextCarousel texts={texts} />
 
-      <Compare />
-      <Plans />
+      {/* <Compare /> */}
       <Testimonials />
+      <Plans />
       <Contact />
       {/* {sections.map(({ component: Section, id }, index) => (
           <Section key={id} />

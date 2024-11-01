@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import SectionContainer from "./share/SectionContainer";
 import Image from "next/image";
+import TextContainer from "./share/TextContainer";
+import AnimatedText from "./share/AnimatedText";
 
 interface TestimonialProps {
   name: string;
@@ -81,6 +83,7 @@ const cover = {
     scale: 1,
     translateY: "44%",
     translateX: 0,
+    backgroundColor: "#D4CDED",
   },
 };
 const testimonialVariants = {
@@ -99,28 +102,34 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
   image,
 }) => (
   <motion.div
-    className=" h-[23.5rem] text-black group rounded-3xl relative overflow-visible"
-    initial="initial"
-    animate="initial"
-    whileHover="animate"
-    transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
+    initial={{ opacity: 0, y: Math.random() * (300 - 100) + 100 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5 }}
   >
     <motion.div
-      className="rounded-3xl flex flex-col   p-6 relative z-10 h-full bg-gray-100"
-      variants={cover}
+      className=" h-[23.5rem] text-black group rounded-3xl relative overflow-visible"
+      initial="initial"
+      whileHover="animate"
       transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
     >
-      <h3 className="text-2xl font-semibold mb-1">{name}</h3>
-      <p className=" text-sm mb-4 text-gray-400">{role}</p>
-      <p className=" mt-auto">{testimonial}</p>
-    </motion.div>
-    <motion.div
-      variants={testimonialVariants}
-      transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
-      className=" rounded-3xl  overflow-hidden  shadow-lg  absolute inset-0 w-full z-0 h-full  bg-gray-100 "
-    >
-      <img src="/images/pp2.jpg" alt="" />
-      {/* <p className="text-white">{testimonial}</p> */}
+      <motion.div
+        className="rounded-3xl flex flex-col   p-6 relative z-10 h-full bg-gray-100"
+        variants={cover}
+        transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
+      >
+        <h3 className="text-2xl font-semibold mb-1">{name}</h3>
+        <p className=" text-sm mb-4 text-gray-400">{role}</p>
+        <p className=" mt-auto">{testimonial}</p>
+      </motion.div>
+      <motion.div
+        variants={testimonialVariants}
+        transition={{ duration: 0.5 }} // Adjust this value to change the overall animation duration
+        className=" rounded-3xl  overflow-hidden  shadow-lg  absolute inset-0 w-full z-0 h-full  bg-gray-100 "
+      >
+        <img src="/images/pp2.jpg" alt="" />
+        {/* <p className="text-white">{testimonial}</p> */}
+      </motion.div>
     </motion.div>
   </motion.div>
 );
@@ -130,16 +139,9 @@ const Testimonials: React.FC = () => {
     <SectionContainer id="testimonials" className="bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="flex justify-center gap-x-3 items-center mb-12">
-          <motion.h2
-            className="text-xl  bg-gray-100 px-6 py-2 rounded-full"
-            whileHover={{ scale: 1.05 }}
-          >
-            Our Customers
-          </motion.h2>
-          <motion.div
-            className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center"
-            whileHover={{ scale: 1.1, backgroundColor: "#e5e7eb" }}
-          >
+          <TextContainer>Our Customers</TextContainer>
+
+          <TextContainer className="w-12 h-12 bg-gray-100 !rounded-full flex items-center justify-center !p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-black"
@@ -152,12 +154,16 @@ const Testimonials: React.FC = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </motion.div>
+          </TextContainer>
         </div>
-        <h1 className="text-5xl font-normal mb-12 text-center">
-          Don't Just Take <br />
-          Our Word
-        </h1>
+        <AnimatedText
+          text="Don't Just Take"
+          className="text-5xl font-normal justify-center text-center mx-auto"
+        />
+        <AnimatedText
+          text="Our Word"
+          className="text-5xl font-normal justify-center mb-12 text-center mx-auto"
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={index} {...testimonial} />

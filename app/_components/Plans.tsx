@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import SectionContainer from "./share/SectionContainer";
+import AnimatedText from "./share/AnimatedText";
+import Arrow from "./share/Arrow";
 
 const pricingPlans = [
   {
     name: "Starter",
     description:
       "Best for Squarespace or Shopify template-based websites with 10 or fewer pages.",
-    monthlyPrice: 0,
-    yearlyPrice: 0,
+    monthlyPrice: 10,
+    yearlyPrice: 10,
     color: "bg-purple-100",
   },
   {
     name: "Pro+",
     description:
       "For more robust websites: custom sites, sites requiring login or live streaming, or Shopify Plus.",
-    monthlyPrice: 0,
-    yearlyPrice: 0,
+    monthlyPrice: 10,
+    yearlyPrice: 10,
     color: "bg-gray-100",
     isBlur: true,
   },
@@ -58,49 +61,55 @@ const PricingPlans: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center py-16 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-7xl mx-auto">
+    <SectionContainer id="plans">
+      <div className="w-full px-5 sm:px-10 mx-auto ">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <div className="flex gap-x-2 w-auto">
             <motion.button
               whileTap={{ scale: 0.95 }}
-              className={`px-4 py-1 ${
-                !isAnnual && "pl-1"
-              } rounded-full flex items-center gap-x-2 text-black border border-black`}
+              initial={{ paddingLeft: "1rem", paddingRight: "1rem" }}
+              animate={{
+                paddingLeft: !isAnnual ? "0.5rem" : "1rem",
+                paddingRight: !isAnnual ? "0.5rem" : "1rem",
+              }}
+              className={`px-4   rounded-full flex items-center  text-black border border-black h-[3rem]`}
               onClick={() => setIsAnnual(false)}
             >
               <AnimatePresence>
                 {!isAnnual && (
                   <motion.div
                     initial={{ width: 0, height: 0 }}
-                    animate={{ width: "1.75rem", height: "1.75rem" }}
+                    animate={{ width: "2.25rem", height: "2.25rem" }}
                     exit={{ width: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.5 }}
                     className="rounded-full bg-primary"
                   />
                 )}
               </AnimatePresence>
-              <p>Monthly</p>
+              <p className=" ml-2">Monthly</p>
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.95 }}
-              className={`px-4 py-1 ${
-                isAnnual && "pl-1"
-              } rounded-full flex items-center justify-center gap-x-2 w-auto text-black border border-black`}
+              initial={{ paddingLeft: "1rem", paddingRight: "1rem" }}
+              animate={{
+                paddingLeft: isAnnual ? "0.5rem" : "1rem",
+                paddingRight: isAnnual ? "0.5rem" : "1rem",
+              }}
+              className={`px-4 rounded-full flex items-center justify-center  w-auto text-black border border-black h-[3rem]`}
               onClick={() => setIsAnnual(true)}
             >
               <AnimatePresence>
                 {isAnnual && (
                   <motion.div
                     initial={{ width: 0, height: 0 }}
-                    animate={{ width: "1.75rem", height: "1.75rem" }}
+                    animate={{ width: "2.25rem", height: "2.25rem" }}
                     exit={{ width: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.5 }}
                     className="rounded-full bg-primary"
                   />
                 )}
               </AnimatePresence>
-              <p>Annual</p>
+              <p className=" ml-2">Annual</p>
             </motion.button>
           </div>
           <div className="flex items-center space-x-4">
@@ -113,9 +122,11 @@ const PricingPlans: React.FC = () => {
           </div>
         </div>
 
-        <h1 className="text-[2rem] sm:text-[2.5rem] font-medium text-center mb-12 text-black">
-          Explore Our Plans
-        </h1>
+        <AnimatedText
+          text="Explore Our Plans"
+          big
+          className="text-[2rem] sm:text-[3.5rem] font-medium text-center mb-12 text-black justify-center"
+        />
 
         <motion.div
           ref={ref}
@@ -130,23 +141,49 @@ const PricingPlans: React.FC = () => {
               variants={cardVariants}
               className={`rounded-3xl p-6 ${plan.color} ${
                 plan.isBlur ? "!backdrop-blur-sm !opacity-20" : ""
-              } transition-all    duration-300 hover:scale-105`}
+              } transition-all  min-h-[25rem] flex flex-col  duration-300 hover:scale-105 group`}
             >
-              <div className="mx-auto text-black border border-black rounded-full px-4 py-1 w-fit mb-4">
-                {isAnnual ? "Annual" : "Monthly"}
+              <div className="mx-auto text-black border border-black rounded-full  py-2 w-[5rem] text-center mb-4">
+                <AnimatePresence mode="wait">
+                  {isAnnual ? (
+                    <motion.p
+                      key="annual"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      Annual
+                    </motion.p>
+                  ) : (
+                    <motion.p
+                      key="monthly"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      Monthly
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-medium mb-4 text-center text-black">
-                {plan.name}
-              </h2>
-              <p className="text-sm sm:text-base text-black mb-6 text-center">
-                {plan.description}
-              </p>
-              <div className="flex items-center justify-between">
+              <div className=" flex flex-col gap-y-4 my-auto">
+                {" "}
+                <h2 className="text-2xl sm:text-5xl font-medium mb-4 text-center text-black">
+                  {plan.name}
+                </h2>
+                <p className="text-sm sm:text-base text-black mb-6 text-center">
+                  {plan.description}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between mt-auto">
                 {plan.monthlyPrice ? (
-                  <div className="text-xl sm:text-2xl font-medium text-black rounded-full px-4 py-1 bg-white">
+                  <div className="text-xl sm:text-2xl font-medium text-black rounded-full px-5 py-4 bg-white">
                     ${isAnnual ? plan.yearlyPrice : plan.monthlyPrice}
-                    <span className="text-xs sm:text-sm font-normal text-black">
-                      /mo
+                    <span className="text-xs sm:text-sm font-normal text-black ml-5">
+                      / Initial Set-Up
                     </span>
                   </div>
                 ) : (
@@ -154,36 +191,13 @@ const PricingPlans: React.FC = () => {
                     Enquire
                   </div>
                 )}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`p-2 rounded-full ${
-                    plan.name === "Starter"
-                      ? "bg-black text-white"
-                      : "bg-white text-black border border-gray-300"
-                  }`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 sm:h-6 sm:w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </motion.button>
+                <Arrow className=" w-14 h-14" />
               </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
-    </div>
+    </SectionContainer>
   );
 };
 

@@ -5,12 +5,12 @@ const Arrow = ({ className }: { className?: string } = {}) => {
     >
       <img
         src="/images/arrow.svg"
-        className=" absolute translate-x-[-300%] translate-y-[300%]  group-hover:translate-x-[0%] group-hover:translate-y-[0%] transition-all duration-[500ms]"
+        className=" w-2/4 h-2/4 absolute translate-x-[-300%] translate-y-[300%]  group-hover:translate-x-[0%] group-hover:translate-y-[0%] transition-all duration-[500ms]"
         alt=""
       />
       <img
         src="/images/arrow.svg"
-        className=" absolute   group-hover:translate-x-[300%] group-hover:translate-y-[-300%] transition-all duration-[500ms]"
+        className=" absolute  w-2/4 h-2/4   group-hover:translate-x-[300%] group-hover:translate-y-[-300%] transition-all duration-[500ms]"
         alt=""
       />
     </div>

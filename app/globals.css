@@ -48,13 +48,7 @@ body {
   background-color: #171717;
   color: #ffffff;
 }
-#box {
-  position: absolute;
-  background: red;
-  height: 40px;
-  width: 40px;
-  cursor: move;
-}
+
 
 #ground {
   position: absolute;

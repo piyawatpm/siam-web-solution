@@ -14,9 +14,9 @@ const config: Config = {
         kanetin: ["Kanetin", "sans-serif"],
       },
       colors: {
-        primary: "#FEF8E7",
-        secondary: "#331922",
-        grey: "#F6F6F6",
+        primary: "#D4CDED",
+        secondary: "#FEE797",
+        grayPrimary: "#F6F6F6",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

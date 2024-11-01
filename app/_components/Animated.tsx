@@ -101,7 +101,7 @@ const Animated: React.FC = () => {
         width: width,
         height: height,
         wireframes: false, // Disable wireframes for custom rendering
-        background: "#FEF8E7",
+        background: "#D4CDED",
       },
     });
 
@@ -150,12 +150,12 @@ const Animated: React.FC = () => {
           frictionAir: 0.01,
           isStatic: false, // Set to true if you want the pill to be static
           render: {
-            fillStyle: index % 2 === 0 ? "#331922" : "#FFFFFF", // Yellow fill color
+            fillStyle: index % 2 === 0 ? "#FEE797" : "#FFFFFF", // Yellow fill color
             strokeStyle: "#000000", // Black border
             lineWidth: 2,
             text: {
               content: label,
-              color: index % 2 === 0 ? "#FFFFFF" : "#000000",
+              color: "#000000",
               size: 20,
               family: "Arial",
             },
@@ -225,8 +225,9 @@ const Animated: React.FC = () => {
         {
           isStatic: true,
           render: {
-            fillStyle: "#FFD74C",
-            strokeStyle: "#FFD74C",
+            fillStyle: "#FFFFFF",
+            strokeStyle: "#FFFFFF",
+
             lineWidth: 5,
           },
         },
@@ -244,7 +245,7 @@ const Animated: React.FC = () => {
       {
         isStatic: true,
         render: {
-          fillStyle: "#FFFFFF",
+          fillStyle: "#FEE797",
           strokeStyle: "#FFFFFF",
           lineWidth: 70,
         },

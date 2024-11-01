@@ -125,7 +125,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                         />
                       </div>
                     </div>
-                    <StartButton className=" mt-5 w-fit" delay={0} />
+                    <StartButton className=" mt-5 w-fit" delay={0.5} />
                   </div>
                 </div>
                 <div className=" w-full h-[20rem]   mt-10 flex p-10 gap-x-5">
@@ -146,7 +146,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                       customers than those without one.
                     </p>
                   </div> */}
-                  <motion.div
+                  {/* <motion.div
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.2, delay: 3.9 }}
@@ -157,7 +157,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                       Businesses with a website are likely to reach 55% more
                       customers than those without one.
                     </p>
-                  </motion.div>
+                  </motion.div> */}
                   {/* <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
