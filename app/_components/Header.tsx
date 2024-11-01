@@ -68,14 +68,10 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
       z-[9999999] 
       transition-colors 
       duration-[500ms]
-      bg-white/50
+    
       transform-gpu
       will-change-transform
-      supports-[backdrop-filter]:bg-white/50
-      supports-[backdrop-filter]:backdrop-blur-xl
-      supports-[backdrop-filter]:backdrop-saturate-[160%]
-      supports-[backdrop-filter]:backdrop-contrast-[45%]
-      supports-[backdrop-filter]:backdrop-brightness-[140%]
+   
     `}
       initial={{ y: -50, opacity: 0 }}
       animate={controls}
