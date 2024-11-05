@@ -49,7 +49,6 @@ body {
   color: #ffffff;
 }
 
-
 #ground {
   position: absolute;
   top: 140px;
@@ -80,4 +79,10 @@ body {
   right: 0;
   transform: translate(85%, 0%);
   background-color: white;
+}
+
+.slider-container {
+  min-height: 0;
+  min-width: 0;
+  padding: 20px;
 }

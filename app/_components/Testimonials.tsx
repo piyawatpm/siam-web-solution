@@ -139,7 +139,7 @@ const Testimonials: React.FC = () => {
     <SectionContainer id="testimonials" className="bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="flex justify-center gap-x-3 items-center mb-12">
-          <TextContainer>Our Customers</TextContainer>
+          <TextContainer>Customers</TextContainer>
 
           <TextContainer className="w-12 h-12 bg-gray-100 !rounded-full flex items-center justify-center !p-2">
             <svg

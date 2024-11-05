@@ -9,15 +9,16 @@ function TextCarousel({ texts }: { texts: string[] }) {
   const settings = {
     className: "center",
     infinite: true,
-
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 3000,
-    autoplaySpeed: 3000,
+    speed: 4000, // Increased for smoother animation
+    autoplaySpeed: 4000, // Set to 0 for continuous movement
     cssEase: "linear",
     arrows: false,
     variableWidth: true,
+    pauseOnHover: false, // Prevent pausing on hover
+    waitForAnimate: false, // Don't wait for animation to complete
   };
 
   return (

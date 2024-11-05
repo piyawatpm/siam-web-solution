@@ -28,7 +28,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   };
 
   const child = {
-    hidden: { opacity: 1, y: 90 },
+    hidden: { opacity: 1, y: 150 },
     visible: {
       opacity: 1,
       y: 0,
@@ -60,7 +60,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 
   return (
     <motion.div
-      className={`overflow-hidden leading-[1.2em] text-4xl text-black flex ${className}`}
+      className={`overflow-hidden leading-[1.4em]  text-black flex ${className}`}
       variants={container}
       initial="hidden"
       animate="visible"

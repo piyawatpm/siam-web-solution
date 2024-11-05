@@ -17,12 +17,7 @@ const benefits = [
     description:
       "Display your services with high-quality images and detailed descriptions.",
   },
-  {
-    title: "Customer Reviews and Testimonials",
-    imgPath: "/images/benefits/reviews.png",
-    description:
-      "Build trust with potential customers by showcasing positive feedback from your clients.",
-  },
+
   {
     title: "Mobile-Friendly Design",
     imgPath: "/images/benefits/mobile.png",
@@ -34,6 +29,12 @@ const benefits = [
     title: "SEO-Friendly to Boost Visibility",
     description:
       "Optimize your website for search engines to increase your online presence.",
+  },
+  {
+    imgPath: "/images/benefits/animation.png",
+    title: "Engaging Animation for Enhanced User Experience",
+    description:
+      "Bring your website to life with captivating animations that enhance user interaction and engagement.",
   },
 ];
 
@@ -53,7 +54,9 @@ const Impact: React.FC = () => {
             className="w-full md:w-1/2"
           >
             <div className="sticky top-[150px]">
-              <TextContainer className=" my-2">Benefits</TextContainer>
+              <TextContainer className=" my-2 md:mx-0 mx-auto">
+                Benefits
+              </TextContainer>
               <h2 className="text-4xl font-bold mb-6">
                 Transform Your Digital Presence
               </h2>
@@ -79,7 +82,7 @@ const Impact: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group hover:shadow-lg  rounded-2xl p-6 transition-all duration-300 border border-greyPrimary"
+                className="group hover:shadow-lg  rounded-2xl p-6 transition-all duration-300 border border-greyPrimary hover:border-primary"
               >
                 <h3 className="text-2 font-semibold mb-3 flex items-center gap-x-3">
                   <div className="   bg-primary rounded-lg overflow-hidden flex items-center justify-center p-3">

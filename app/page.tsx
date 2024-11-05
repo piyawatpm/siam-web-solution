@@ -34,44 +34,34 @@ export default function Home() {
     "BRANDING",
     "/",
     "AI",
+    "/",
+    "ANIMATIONS",
+    "/"
   ];
 
   // In your component
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const minLoadTime = 2200; // 1 seconds minimum
-    const startTime = Date.now();
+  // useEffect(() => {
+  //   const minLoadTime = 2200; // 1 seconds minimum
+  //   const startTime = Date.now();
 
-    const checkLoadingComplete = () => {
-      const elapsedTime = Date.now() - startTime;
-      if (elapsedTime >= minLoadTime && isMobile !== undefined) {
-        console.log("loading complete");
-        setIsLoading(false);
-      }
-    };
+  //   const checkLoadingComplete = () => {
+  //     const elapsedTime = Date.now() - startTime;
+  //     if (elapsedTime >= minLoadTime && isMobile !== undefined) {
+  //       console.log("loading complete");
+  //       setIsLoading(false);
+  //     }
+  //   };
 
-    const interval = setInterval(checkLoadingComplete, 100);
+  //   const interval = setInterval(checkLoadingComplete, 100);
 
-    return () => clearInterval(interval);
-  }, [isMobile]);
+  //   return () => clearInterval(interval);
+  // }, [isMobile]);
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-  const sections = [
-    // { component: Hero, id: "hero" },
-    // {
-    //   component: <PayAsYouGo onInView={setIsLogoCenter} />,
-    //   id: "pay-as-you-go",
-    // },
-    // { component: Process, id: "process" },
-    // { component: Impact, id: "impact" },
-    { component: Compare, id: "compare" },
-    // { component: Plans, id: "plans" },
-    { component: Testimonials, id: "testimonials" },
-    { component: Contact, id: "contact" },
-  ];
+  // if (isLoading) {
+  //   return <LoadingScreen />;
+  // }
 
   // useEffect(() => {
   //   const handleScroll = () => {

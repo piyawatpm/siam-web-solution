@@ -11,6 +11,7 @@ import { MdAttachMoney } from "react-icons/md";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import StartButton from "./share/startButton";
 import Arrow from "./share/Arrow";
+import LogoBg from "./share/logoBg";
 
 const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
   onInView,
@@ -81,31 +82,32 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
           }}
           className=" flex-1 !pr-0 flex items-center justify-center flex-col gap-y-1 z-10  absolute bg-transparent  inset-0"
         >
-          <motion.div className=" w-full h-full bg-white flex px-5 sm:px-10">
-            <motion.div className="h-full flex  flex-col   justify-center mr-auto sm:w-1/2  overflow-hidden">
+          <motion.div className=" w-full h-full bg-white flex px-5 sm:px-10 relative">
+            <LogoBg />
+            <motion.div className="h-full flex  flex-col   justify-center mr-auto w-full md:w-1/2  overflow-hidden z-20">
               <div className=" absolute top-3 left-3">
                 <MovingText text="Quality" />
               </div>
-              <div className=" w-full h-full flex flex-col justify-end py-4">
+              <div className=" w-full h-full flex flex-col justify-center md:justify-end pt-[91px]  md:py-4">
                 <div className=" flex flex-col ">
                   <div className=" flex flex-col text-start ">
                     <AnimatedText
                       text="Your Website is the"
-                      className=" !font-medium text-[2rem] mb-3"
-                      delay={3.5}
+                      className=" !font-medium text-[3rem] mb-3"
+                      delay={3.7}
                     />
 
                     <AnimatedText
-                      className=" !font-medium text-[4rem] mb-3"
+                      className=" !font-medium text-[5rem]  mb-3"
                       text="DigitalDoor"
                       highlightWords={["DigitalDoor"]}
-                      delay={3.6}
+                      delay={3.8}
                     />
 
                     <AnimatedText
-                      className=" !font-medium text-[2rem]"
+                      className=" !font-medium text-[3rem]"
                       text="to Your Store"
-                      delay={3.7}
+                      delay={3.9}
                     />
                   </div>
                   <div className=" w-full flex items-center justify-between pr-5 sm:pr-10">
@@ -113,22 +115,14 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                       <div className="h-fit w-fit overflow-y-hidden ">
                         <AnimatedText
                           className=" !font-medium text-[1rem]"
-                          text="Unlock Your Digital Potential"
-                          delay={3.7}
-                        />
-                      </div>
-                      <div className="h-fit w-fit overflow-y-hidden  ">
-                        <AnimatedText
-                          className=" !font-medium text-[1rem]"
-                          text="with Cutting-Edge Solutions"
+                          text="Let's Build Something Amazing Together"
                           delay={3.7}
                         />
                       </div>
                     </div>
-                    <StartButton className=" mt-5 w-fit" delay={0.5} />
                   </div>
                 </div>
-                <div className=" w-full h-[20rem]   mt-10 flex p-10 gap-x-5">
+                <div className=" w-full h-[15rem]   mt-10 flex pr-10 gap-x-5">
                   {/* <div className=" flex  flex-col rounded-2xl border-[1px] border-[#EDEFF3] bg-[#FBFCFC]  p-5 pt-10">
                     <Arrow className=" absolute top-0 right-0" />
                     <div className=" w-8 h-8 rounded-full   bg-white p-[1px]">
@@ -146,19 +140,57 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                       customers than those without one.
                     </p>
                   </div> */}
-                  {/* <motion.div
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2, delay: 3.9 }}
-                    className=" flex  group relative  h-fit flex-col rounded-2xl border-[1px] border-[#EDEFF3] bg-[#FBFCFC]  p-5 "
-                  >
-                    <Arrow className=" !absolute top-0 right-0 !translate-x-[50%] !translate-y-[-50%]" />
-                    <p>
-                      Businesses with a website are likely to reach 55% more
-                      customers than those without one.
-                    </p>
-                  </motion.div> */}
-                  {/* <motion.div
+                  <div className=" flex flex-col gap-y-5">
+                    <motion.div
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: 3.9 }}
+                      className=" flex  group relative  h-fit flex-col rounded-2xl border-[1px] border-[#EDEFF3] bg-[#FBFCFC]  p-5 "
+                    >
+                      <Arrow className=" !absolute top-0 right-0 !translate-x-[50%] !translate-y-[-50%]" />
+                      <p>
+                        Businesses with a website are likely to reach 55% more
+                        customers than those without one.
+                      </p>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: 4.0 }}
+                      className="flex relative h-fit flex-col items-center justify-center rounded-2xl p-5"
+                    >
+                      <button className="group flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-white transition-all hover:bg-gray-800">
+                        Get Started
+                        <motion.div
+                          animate={{
+                            y: [0, 4, 0],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <svg
+                            className="h-5 w-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                            />
+                          </svg>
+                        </motion.div>
+                      </button>
+                    </motion.div>
+                  </div>
+
+                  <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2, delay: 3.9 }}
@@ -167,19 +199,19 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
                     <Arrow className=" !absolute top-0 right-0 !translate-x-[50%] !translate-y-[-50%]" />
                     <div className=" flex ">
                       <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white p-[1px]">
-                        <img className=" cover" src="/images/pp2.jpg" alt="" />
+                        {/* <img className=" cover" src="/images/pp2.jpg" alt="" /> */}
                       </div>
                       <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white translate-x-[-50%] p-[1px]">
-                        <img className=" cover" src="/images/pp2.jpg" alt="" />
+                        {/* <img className=" cover" src="/images/pp2.jpg" alt="" /> */}
                       </div>
                       <div className=" overflow-hidden w-8 h-8 rounded-full  bg-white translate-x-[-100%] p-[1px]">
-                        <img className=" cover" src="/images/pp3.jpg" alt="" />
+                        {/* <img className=" cover" src="/images/pp3.jpg" alt="" /> */}
                       </div>
                     </div>
 
                     <p className=" font-normal text-[2rem]">10X</p>
                     <p>Grow with us</p>
-                  </motion.div> */}
+                  </motion.div>
 
                   {/* <div className=" w-12 h-12 rounded-full rounded-bl-none  bg-blue-500  z-50 absolute top-0 right-0"></div> */}
                 </div>
@@ -211,7 +243,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
             times: [0, 0.1, 0.33, 0.43, 0.66, 0.9, 1],
           }}
           // transition={{ duration: 2, ease: "easeInOut" }}
-          className="h-full  sm:w-1/2  ml-auto relative z-20 bg-transparent "
+          className="h-full w-full   md:w-1/2  ml-auto relative z-20 bg-transparent "
         >
           <motion.div
             animate={{
@@ -223,7 +255,9 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
               ease: "easeInOut",
               times: [0, 0.1, 0.33, 0.43, 0.66, 1],
             }}
-            className=" w-full h-full bg-primary  flex overflow-hidden relative"
+            className={` w-full h-full bg-primary  flex overflow-hidden relative ${
+              isMobile ? "hidden" : ""
+            }`}
           >
             <motion.div
               ref={ref}
@@ -305,28 +339,30 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
             <div className=" absolute bottom-3 right-3">
               <MovingText text="Speed" invert />
             </div>
-            <motion.div className="absolute inset-0  w-screen h-screen">
-              <motion.img
-                src="/images/computer.png"
-                alt="computer"
-                className="mt-auto  w-[750px] h-[750px]     absolute  "
-                initial={{
-                  opacity: 0,
-                  rotate: 0,
-                  bottom: -400,
-                }}
-                animate={{
-                  opacity: 1,
-                  translateY: 0,
-                  rotate: 0,
-                  bottom: -200,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 3.5,
-                  ease: "easeOut",
-                }}
-              />
+            <motion.div className="absolute inset-0  w-screen h-screen flex items-center justify-center">
+              <div className=" w-1/2 h-full  mr-auto flex items-end justify-center">
+                <motion.img
+                  src="/images/hero.png"
+                  alt="computer"
+                  className="mt-auto    w-3/4 h-3/4 object-contain "
+                  initial={{
+                    opacity: 0,
+                    rotate: 0,
+                    // bottom: -400,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    translateY: 0,
+                    rotate: 0,
+                    // bottom: -200,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 3.5,
+                    ease: "easeOut",
+                  }}
+                />
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>

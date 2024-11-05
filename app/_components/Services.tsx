@@ -14,19 +14,23 @@ const services = [
   {
     icon: <FiMonitor className="w-6 h-6" />,
     available: true,
-    title: "Web Design",
+    title: "Web Design Package",
     description:
-      "Crafting visually captivating websites that resonate with your audience and elevate your brand identity.",
+      "Delivering comprehensive web design solutions tailored to your business needs, ensuring a unique online presence.",
     features: [
-      "Customized visual aesthetics",
-      "User-centric design approach",
-      "Responsive and mobile-friendly",
-      "Interactive and engaging layouts",
+      "Content Management System (CMS) integration",
+      "Responsive design for optimal user experience",
+      "Full technical support for seamless functionality",
+      "Incorporation of fancy animations for visual appeal",
+      "Affordable pricing for all businesses",
+      "Search Engine Optimization (SEO) for better visibility",
+      "Google Analytics integration for performance tracking",
+      "Unique design tailored to your brand's identity",
     ],
   },
   {
     icon: <FiCode className="w-6 h-6" />,
-    available: true,
+    available: false,
     title: "Web Development",
     description:
       "Building robust websites with advanced functionality and seamless performance, tailored to your business needs.",
@@ -112,8 +116,10 @@ const Services = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`group p-8 rounded-2xl border border-gray-100 hover:border-primary transition-all duration-300 bg-white hover:shadow-lg ${
-                !service.available && "blur-sm"
+              className={`group p-8 rounded-2xl border border-gray-100  transition-all duration-300 bg-white ${
+                !service.available
+                  ? "blur-sm"
+                  : "hover:border-primary  hover:shadow-lg"
               }`}
             >
               <div className="flex items-center mb-4">

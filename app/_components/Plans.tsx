@@ -5,36 +5,82 @@ import SectionContainer from "./share/SectionContainer";
 import AnimatedText from "./share/AnimatedText";
 import Arrow from "./share/Arrow";
 import LogoBg from "./share/logoBg";
-
 const pricingPlans = [
   {
-    name: "Starter",
-    description:
-      "Best for Squarespace or Shopify template-based websites with 10 or fewer pages.",
-    monthlyPrice: 10,
-    yearlyPrice: 10,
-    color: "bg-purple-100",
+    name: "Package 1",
+    description: "Custom web design + search engine optimisation",
+    monthlyPrice: 259,
+    yearlyPrice: 2590, // 10% savings annually
+    color: "bg-primary",
+    features: [
+      "Custom design to match your Brand",
+      "Responsive Web Design",
+      "Search Engine Optimisation",
+      "Unlimited Pages",
+      "Free Unlimited Content updates",
+    ],
   },
   {
-    name: "Pro+",
-    description:
-      "For more robust websites: custom sites, sites requiring login or live streaming, or Shopify Plus.",
-    monthlyPrice: 10,
-    yearlyPrice: 10,
+    name: "Package 2",
+    isBlur: true,
+    description: "Custom web design + SEO + ordering system",
+    monthlyPrice: 0,
+    yearlyPrice: 0,
     color: "bg-gray-100",
-    isBlur: true,
+    features: [
+      "Everything in Package A, plus:",
+      "Online Ordering / Booking System",
+      "QR Code Ordering",
+      "Online Payment",
+      "Customise to match your Brand",
+    ],
   },
   {
-    name: "Enterprise",
-    description:
-      "For your brand or organization, with change management and 99.99% uptime.",
-    monthlyPrice: null,
-    yearlyPrice: null,
-    color: "bg-yellow-100",
+    name: "Package 3",
     isBlur: true,
+    description: "Custom web + SEO + ordering system + review management",
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    color: "bg-[#FEE797]",
+    features: [
+      "Everything in Package B, plus:",
+      "Reviews Monitor & Sync",
+      "Prevent Negative Reviews",
+      "Automated Review Requests",
+      "Review Widgets and Badges",
+    ],
   },
+  // {
+  //   name: "Package D",
+  //   description:
+  //     "Custom web + SEO + ordering system + review management + direct marketing",
+  //   monthlyPrice: 399,
+  //   yearlyPrice: 3990,
+  //   color: "bg-blue-100",
+  //   features: [
+  //     "Everything in Package C, plus:",
+  //     "Send Email Marketing Campaign",
+  //     "Send SMS Marketing Campaign",
+  //     "Analyse Campaign Results",
+  //     "Answer to all Reviews for you",
+  //   ],
+  // },
+  // {
+  //   name: "Package E",
+  //   description:
+  //     "Enterprise solution with dedicated support and custom features",
+  //   monthlyPrice: null, // For custom quote
+  //   yearlyPrice: null,
+  //   color: "bg-green-100",
+  //   features: [
+  //     "Everything in Package D, plus:",
+  //     "Dedicated Account Manager",
+  //     "Priority Support 24/7",
+  //     "Custom Feature Development",
+  //     "Advanced Analytics & Reporting",
+  //   ],
+  // },
 ];
-
 const PricingPlans: React.FC = () => {
   const [isAnnual, setIsAnnual] = useState(false);
   const ref = useRef(null);
@@ -115,7 +161,7 @@ const PricingPlans: React.FC = () => {
           </div>
           <div className="flex items-center space-x-4">
             <span className="text-gray-600 py-2 px-4 bg-gray-100 rounded-full">
-              Our Prices
+              Prices
             </span>
             <span className="text-2xl p-2 aspect-square font-bold bg-gray-100 rounded-full text-gray-600">
               $
@@ -134,18 +180,20 @@ const PricingPlans: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className={` grid grid-cols-1  lg:grid-cols-3 gap-6`}
         >
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={plan.name}
               variants={cardVariants}
-              className={`rounded-3xl p-6 ${plan.color} ${
-                plan.isBlur ? "!backdrop-blur-sm !opacity-20" : ""
-              } transition-all relative  min-h-[25rem] flex flex-col  duration-300 hover:scale-105 group`}
+              className={`rounded-3xl  ${
+                plan.isBlur ? " !blur-sm" : ""
+              } border p-6 ${
+                plan.color
+              } transition-all relative min-h-[25rem] flex flex-col duration-300 hover:scale-105 group`}
             >
               <LogoBg color="white" />
-              <div className="mx-auto relative z-20 text-black border border-black rounded-full  py-2 w-[5rem] text-center mb-4">
+              <div className="mx-auto relative z-20 text-black border border-black rounded-full py-2 w-[5rem] text-center mb-4">
                 <AnimatePresence mode="wait">
                   {isAnnual ? (
                     <motion.p
@@ -170,30 +218,41 @@ const PricingPlans: React.FC = () => {
                   )}
                 </AnimatePresence>
               </div>
-              <div className=" flex relative z-20 flex-col gap-y-4 my-auto">
-                {" "}
-                <h2 className="text-2xl sm:text-5xl font-medium mb-4 text-center text-black">
+
+              <div className="flex relative z-20 flex-col gap-y-4 my-4">
+                <h2 className="text-2xl sm:text-4xl font-semibold text-center text-black">
                   {plan.name}
                 </h2>
-                <p className="text-sm sm:text-base text-black mb-6 text-center">
+                <p className="text-sm sm:text-base text-black/80 text-center px-2">
                   {plan.description}
                 </p>
               </div>
 
-              <div className="flex relative z-20 items-center justify-between mt-auto">
+              <div className="flex flex-col gap-4 relative z-20 flex-1">
+                {plan.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-black/70" />
+                    <p className="text-sm text-black/80">{feature}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex relative z-20 items-center justify-between mt-6 pt-4 ">
                 {plan.monthlyPrice ? (
-                  <div className="text-xl sm:text-2xl font-medium text-black rounded-full px-5 py-4 bg-white">
-                    ${isAnnual ? plan.yearlyPrice : plan.monthlyPrice}
-                    <span className="text-xs sm:text-sm font-normal text-black ml-5">
-                      / Initial Set-Up
+                  <div className="flex flex-col">
+                    <div className="text-xl sm:text-2xl font-medium text-black bg-white rounded-2xl px-4 py-2">
+                      ${isAnnual ? plan.yearlyPrice : plan.monthlyPrice}
+                    </div>
+                    <span className="text-xs mt-1 text-black/70">
+                      Initial Set-Up Fee
                     </span>
                   </div>
                 ) : (
                   <div className="text-xl sm:text-2xl font-bold text-black">
-                    Enquire
+                    Contact Us
                   </div>
                 )}
-                <Arrow className=" w-14 h-14" />
+                <Arrow className="w-10 h-10 transition-transform group-hover:translate-x-2" />
               </div>
             </motion.div>
           ))}
