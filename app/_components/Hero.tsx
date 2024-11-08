@@ -12,10 +12,16 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import StartButton from "./share/startButton";
 import Arrow from "./share/Arrow";
 import LogoBg from "./share/logoBg";
+import LightBulb from "./LightBulb";
+import MaskCursor from "./MaskCursor";
 
 const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
   onInView,
 }) => {
+  // console.log("hero");
+  useEffect(() => {
+    console.log("hero useEffect");
+  }, []);
   const ref = useRef(null);
   const isInView = useInView(ref);
 
@@ -34,6 +40,9 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
         animate={{
           width: ["20%", "20%", "20%", "20%", "50%", "50%", "100%"],
           height: ["22%", "22%", "22%", "22%", "50%", "50%", "100%"],
+        }}
+        onAnimationComplete={() => {
+          console.log("hero onAnimationComplete");
         }}
         transition={{
           duration: 4,
@@ -71,7 +80,6 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
               leftSideWidth,
               leftSideWidth,
               leftSideWidth,
-
               "100%",
             ],
           }}
@@ -83,13 +91,13 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
           className=" flex-1 !pr-0 flex items-center justify-center flex-col gap-y-1 z-10  absolute bg-transparent  inset-0"
         >
           <motion.div className=" w-full h-full bg-white flex px-5 sm:px-10 relative">
-            <LogoBg />
+            {isMobile && <LogoBg />}
             <motion.div className="h-full flex  flex-col   justify-center mr-auto w-full md:w-1/2  overflow-hidden z-20">
               <div className=" absolute top-3 left-3">
                 <MovingText text="Quality" />
               </div>
               <div className=" w-full h-full flex flex-col justify-center md:justify-end pt-[91px]  md:py-4">
-                <div className=" flex flex-col ">
+                <div className=" flex flex-col my-auto ">
                   <div className=" flex flex-col text-start ">
                     <AnimatedText
                       text="Your Website is the"
@@ -340,21 +348,26 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
               <MovingText text="Speed" invert />
             </div>
             <motion.div className="absolute inset-0  w-screen h-screen flex items-center justify-center">
-              <div className=" w-1/2 h-full  mr-auto flex items-end justify-center">
+              <div className=" w-1/2 h-full  mr-auto relative flex items-end justify-center">
+                {/* <LightBulb /> */}
                 <motion.img
-                  src="/images/hero.png"
+                  src="/images/pc.png"
                   alt="computer"
-                  className="mt-auto    w-3/4 h-3/4 object-contain "
+                  className="mt-auto scale-125 absolute right-1/2  w-[97%] "
                   initial={{
+                    x: "50%",
                     opacity: 0,
                     rotate: 0,
-                    // bottom: -400,
+                    bottom: -100,
+                    // scale: 1.4,
                   }}
                   animate={{
+                    x: "50%",
                     opacity: 1,
                     translateY: 0,
                     rotate: 0,
-                    // bottom: -200,
+                    bottom: 0,
+                    // scale: 1.4,
                   }}
                   transition={{
                     duration: 0.5,
@@ -369,6 +382,7 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
       </motion.div>
       {/* Add your hero content here */}
       {/* footer */}
+
       <div className="absolute bottom-5    z-10 px-5 sm:px-10 w-full flex justify-between ">
         <AnimatedText
           big

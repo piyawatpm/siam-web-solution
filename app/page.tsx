@@ -15,12 +15,15 @@ import Process from "./_components/Process";
 import TextCarousel from "./_components/TextCarousel";
 import LoadingScreen from "./_components/LoadingScreen";
 import Services from "./_components/Services";
+import Work from "./_components/Work";
+
 export default function Home() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll({ container: containerRef });
   const [currentSection, setCurrentSection] = useState(0);
   const [isLogoCenter, setIsLogoCenter] = useState(false);
   const isMobile = useIsMobile();
+
   // Example usage
   const texts = [
     "APP",
@@ -36,9 +39,20 @@ export default function Home() {
     "AI",
     "/",
     "ANIMATIONS",
-    "/"
+    "/",
   ];
+  // Add this effect to save scroll position before navigation
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     console.log("scrollPosition", scrollPosition, window.scrollY.toString());
+  //     sessionStorage.setItem("scrollPosition", window.scrollY.toString());
+  //   };
 
+  //   window.addEventListener("beforeunload", handleRouteChange);
+  //   return () => {
+  //     window.removeEventListener("beforeunload", handleRouteChange);
+  //   };
+  // }, []);
   // In your component
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -111,10 +125,11 @@ export default function Home() {
   // }, [currentSection]);
 
   return (
-    <div className="h-screen overflow-scroll">
-      <Header isLogoCenter={isLogoCenter} />
-      <Hero onInView={setIsLogoCenter} />
+    <>
+      {/* <Header isLogoCenter={isLogoCenter} /> */}
+      {/* <Hero onInView={setIsLogoCenter} /> */}
       {/* <PayAsYouGo /> */}
+      <Work />
 
       <Services />
       <Impact />
@@ -127,6 +142,6 @@ export default function Home() {
       {/* {sections.map(({ component: Section, id }, index) => (
           <Section key={id} />
         ))} */}
-    </div>
+    </>
   );
 }
