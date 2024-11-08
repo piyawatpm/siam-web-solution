@@ -15,6 +15,27 @@ body,
   cursor: url("/images/cursor-small.png"), auto !important;
   /* cursor: url(/images/cursor.), pointer !important; */
 }
+/* html::view-transition-group(root) {
+  width: 476px;
+  height: 100%;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  text-orientation: mixed;
+  writing-mode: horizontal-tb;
+  backdrop-filter: none;
+  mix-blend-mode: normal;
+  animation-name: view-transition-group-anim-root;
+  animation-duration: 0.25s;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+}
+html::view-transition-group(*) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red !important;
+} */
 
 body {
   color: black;
@@ -85,4 +106,7 @@ body {
   min-height: 0;
   min-width: 0;
   padding: 20px;
+}
+.removeClipPath {
+  clip-path: none !important;
 }

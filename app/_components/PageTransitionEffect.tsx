@@ -13,11 +13,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 function FrozenRouter(props: { children: React.ReactNode }) {
   const context = useContext(LayoutRouterContext ?? {});
   const frozen = useRef(context).current;
-  useEffect(() => {
-    return () => {
-      console.log("unmounting frozen");
-    };
-  }, []);
+
   if (!frozen) {
     return <>{props.children}</>;
   }
@@ -34,14 +30,22 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const scrollPositions = useRef<{ [key: string]: number }>({});
-
+  const containerRef = useRef<HTMLDivElement>(null);
   // Store scroll position before unmounting
   useEffect(() => {
     const key = pathname + searchParams.toString();
+    const currentRef = containerRef.current; // Store ref value locally
+
     console.log("key", key);
     // Save scroll position before unmounting
     return () => {
-      scrollPositions.current[key] = window.scrollY;
+      console.log(
+        "saving scroll position",
+        key,
+        containerRef.current.scrollTop,
+        currentRef.scrollTop
+      );
+      scrollPositions.current[key] = currentRef.scrollTop;
     };
   }, [pathname, searchParams]);
 
@@ -50,9 +54,10 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
     const key = pathname + searchParams.toString();
     console.log("key", key);
     if (scrollPositions.current[key]) {
+      console.log("scroll now to ", scrollPositions.current[key], key);
       // Use requestAnimationFrame to ensure DOM is ready
       requestAnimationFrame(() => {
-        window.scrollTo({
+        containerRef.current.scrollTo({
           top: scrollPositions.current[key],
           behavior: "instant", // Use instant to avoid smooth scrolling
         });
@@ -60,9 +65,9 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
     } else {
       console.log("no saved position");
       // If no saved position, scroll to top
-      window.scrollTo({
+      containerRef.current.scrollTo({
         top: 0,
-        behavior: "instant",
+        behavior: "instant", // Use instant to avoid smooth scrolling
       });
     }
   }, [pathname, searchParams]);
@@ -74,6 +79,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       scrollPositions.current = {};
     };
   }, []);
+
   const [scrollPosition, setScrollPosition] = useState(0);
   // const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
   //   const position = e.currentTarget.scrollTop;
@@ -138,7 +144,12 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
   //     scrollPositions.current = {};
   //   };
   // }, []);
+
   const key = usePathname();
+  // const initialCircleY = scrollPositions.current.hasOwnProperty(key)
+  //   ? scrollPositions.current[key] + window.innerHeight / 2
+  //   : 0 + window.innerHeight / 2;
+  const initialCircleY = window.innerHeight / 2;
   const sbHeight =
     window.innerHeight * (window.innerHeight / document.body.offsetHeight);
 
@@ -148,7 +159,6 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       mode="popLayout"
     >
       <motion.div
-        onClick={() => {}}
         id={`${key}-${scrollPositions.current[key]}`}
         key={key}
         onAnimationStart={() => {
@@ -159,14 +169,10 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
           setCompleted(true);
         }}
         initial={{
-          clipPath: `circle(0% at 50% ${
-            scrollPositions.current[key] + window.innerHeight / 2
-          }px)`, // Start with a small circle at the center
+          clipPath: `circle(0% at 50% ${initialCircleY}px)`, // Start with a small circle at the center
         }}
         animate={{
-          clipPath: `circle(100vh at 50% ${
-            scrollPositions.current[key] + window.innerHeight / 2
-          }px)`, // Start with a small circle at the center
+          clipPath: `circle(100vh at 50% ${initialCircleY}px)`, // Start with a small circle at the center
           // clipPath: "circle(150% at 50% 50%)", // Expand the circle to cover the entire page
           // transition: { duration: 1, ease: [0.27, 0, 0.51, 1] }, // Control timing and easing
           transition: {
@@ -179,9 +185,13 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
             ease: [0.27, 0, 0.51, 1],
           },
         }}
+        className={` ${completed ? "removeClipPath" : ""}`}
         exit={{
+          position: "fixed",
+          inset: 0,
           // clipPath: "circle(0% at 50% 50%)", // Shrink the circle back to the center
-          transition: { duration: 0.2, ease: [0.27, 0, 0.51, 1] },
+          opacity: [1, 1, 1, 1, 0],
+          transition: { opacity: { duration: 0.2 } },
         }}
         style={{
           // position: completed ? "relative" : "fixed",
@@ -193,7 +203,21 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
         // exit="exit"
         // variants={variants}
       >
-        <FrozenRouter>{children}</FrozenRouter>
+        <FrozenRouter>
+          <div
+            ref={containerRef}
+            onClick={() => {
+              console.log(
+                "clicked",
+                containerRef.current.scrollTop,
+                scrollPositions.current
+              );
+            }}
+            className=" w-full h-screen overflow-scroll "
+          >
+            {children}
+          </div>
+        </FrozenRouter>
       </motion.div>
     </AnimatePresence>
   );

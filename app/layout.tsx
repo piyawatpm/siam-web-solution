@@ -22,7 +22,6 @@ import localFont from "next/font/local";
 import Nav from "./_components/Nav";
 import PageTransitionEffect from "./_components/PageTransitionEffect";
 
-
 const kanetin = localFont({
   src: "../public/fonts/KanetinPersonalUse-vmXK9.otf",
   variable: "--font-kanetin",
@@ -144,22 +143,7 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${kanetin.variable}`}
     >
       <body className="font-sans antialiased bg-background text-foreground relative min-h-screen h-auto">
-        {/* <Scroll> */}
-        <div className="w-full h-full min-h-screen bg-gradient-to-br from-violet-900 to-fuchsia-800 relative">
-          {/* <div
-            className="fixed inset-0"
-            style={{
-              backgroundImage: `radial-gradient(rgba(192, 132, 252, .2) 2px, transparent 0)`,
-              backgroundSize: "15px 15px",
-              backgroundPosition: "-16.5px -16.5px",
-              maskImage: `radial-gradient(ellipse at center, rgba(0, 0, 0, 1), transparent 75%)`,
-            }}
-          /> */}
-
-          <Nav />
-          <PageTransitionEffect>{children}</PageTransitionEffect>
-        </div>
-        {/* </Scroll> */}
+        <Nav /> <PageTransitionEffect>{children}</PageTransitionEffect>
       </body>
     </html>
   );

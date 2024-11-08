@@ -62,7 +62,7 @@ const Work = () => {
   );
 
   return (
-    <SectionContainer id="work" className=" py-24">
+    <SectionContainer id="work" className=" py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <TextContainer className="mx-auto">Our Work</TextContainer>
