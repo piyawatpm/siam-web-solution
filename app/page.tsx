@@ -18,9 +18,6 @@ import Services from "./_components/Services";
 import Work from "./_components/Work";
 
 export default function Home() {
- 
-  const [currentSection, setCurrentSection] = useState(0);
-  const [isLogoCenter, setIsLogoCenter] = useState(false);
   const isMobile = useIsMobile();
 
   // Example usage
@@ -125,10 +122,9 @@ export default function Home() {
 
   return (
     <>
-      {/* <Header isLogoCenter={isLogoCenter} /> */}
-      {/* <Hero onInView={setIsLogoCenter} /> */}
-      {/* <PayAsYouGo /> */}
+      <Hero />
       <Work />
+      <PayAsYouGo />
 
       <Services />
       <Impact />

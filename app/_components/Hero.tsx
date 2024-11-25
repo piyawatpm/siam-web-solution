@@ -14,20 +14,26 @@ import Arrow from "./share/Arrow";
 import LogoBg from "./share/logoBg";
 import LightBulb from "./LightBulb";
 import MaskCursor from "./MaskCursor";
+// import useLogoStore from "../store/useLogoStore";
 
-const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
-  onInView,
-}) => {
+const Hero: React.FC = () => {
   // console.log("hero");
-  useEffect(() => {
-    console.log("hero useEffect");
-  }, []);
+  // const { setIsLogoCenter } = useLogoStore();
+
   const ref = useRef(null);
   const isInView = useInView(ref);
+  // const [timer, setTimer] = useState<number>(0);
 
-  useEffect(() => {
-    onInView(!isInView);
-  }, [isInView, onInView]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTimer((prevTimer) => prevTimer + 1);
+  //   }, 1);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+  // useEffect(() => {
+  //   setIsLogoCenter(!isInView);
+  // }, [isInView, setIsLogoCenter]);
   const isMobile = useIsMobile();
   const leftSideWidth = isMobile ? "100%" : "50%";
   return (
@@ -35,14 +41,14 @@ const Hero: React.FC<{ onInView: (value: boolean) => void }> = ({
       id="hero"
       className="w-screen relative  h-screen flex  items-center justify-center  overflow-hidden bg-black "
     >
+      {/* <div className="absolute top-10 right-10 z-[9999]  font-mono text-white/50">
+        <div className="text-[50px]">{(timer / 1000).toFixed(3)}s</div>
+      </div> */}
       <motion.div
         initial={{ width: "20%", height: "22%" }}
         animate={{
           width: ["20%", "20%", "20%", "20%", "50%", "50%", "100%"],
           height: ["22%", "22%", "22%", "22%", "50%", "50%", "100%"],
-        }}
-        onAnimationComplete={() => {
-          console.log("hero onAnimationComplete");
         }}
         transition={{
           duration: 4,

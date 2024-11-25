@@ -71,7 +71,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       });
     }
   }, [pathname, searchParams]);
-  console.log("scrollPositions", scrollPositions.current);
+
   // Clear scroll positions when component unmounts
   useEffect(() => {
     return () => {
@@ -80,7 +80,6 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
 
-  const [scrollPosition, setScrollPosition] = useState(0);
   // const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
   //   const position = e.currentTarget.scrollTop;
   //   console.log("position", e.currentTarget.scrollTop);
@@ -204,17 +203,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
         // variants={variants}
       >
         <FrozenRouter>
-          <div
-            ref={containerRef}
-            onClick={() => {
-              console.log(
-                "clicked",
-                containerRef.current.scrollTop,
-                scrollPositions.current
-              );
-            }}
-            className=" w-full h-screen overflow-scroll "
-          >
+          <div ref={containerRef} className=" w-full h-screen  overflow-auto ">
             {children}
           </div>
         </FrozenRouter>

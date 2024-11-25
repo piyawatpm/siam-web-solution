@@ -5,8 +5,11 @@ import { animate, motion, useAnimation } from "framer-motion";
 import Sidebar from "./Sidebar";
 import { CgMenuRight } from "react-icons/cg";
 import { useRouter } from "next/navigation";
+import useLogoStore from "../store/useLogoStore";
 
-const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
+const Header = () => {
+  const { isLogoCenter } = useLogoStore();
+
   const router = useRouter();
   console.log("piyawat header");
   const [lang, setLang] = useState("EN");
@@ -27,7 +30,7 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
       });
 
       // Delay for 1 second
-      await new Promise((resolve) => setTimeout(resolve, 2500));
+      await new Promise((resolve) => setTimeout(resolve, 2700));
 
       // Change theme
       setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -44,11 +47,14 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
   };
   const handleTransformHeader = () => {
     animate(headerRef.current, {
-      backgroundColor: isLogoCenter ? "#ffffff" : "",
+      backgroundColor: isLogoCenter
+        ? "rgba(255, 255, 255, 1)"
+        : "rgba(255, 255, 255, 0)",
+
       borderColor: isLogoCenter ? "black" : "",
-      borderBottomWidth: isLogoCenter ? "1px" : "",
-      borderBottomRightRadius: isLogoCenter ? "40px" : "",
-      borderBottomLeftRadius: isLogoCenter ? "40px" : "",
+      borderBottomWidth: isLogoCenter ? "1px" : "0px",
+      borderBottomRightRadius: isLogoCenter ? "40px" : "0px",
+      borderBottomLeftRadius: isLogoCenter ? "40px" : "0px",
       transition: { duration: 1 },
     });
   };
@@ -93,37 +99,24 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
       initial={{
         y: -50,
         opacity: 0,
-        backgroundColor: isLogoCenter ? "#ffffff" : "",
+
+        backgroundColor: isLogoCenter
+          ? "rgba(255, 255, 255, 1)"
+          : "rgba(255, 255, 255, 0)",
+
         borderColor: isLogoCenter ? "black" : "",
-        borderBottomWidth: isLogoCenter ? "1px" : "",
-        borderBottomRightRadius: isLogoCenter ? "40px" : "",
-        borderBottomLeftRadius: isLogoCenter ? "40px" : "",
+        borderBottomWidth: isLogoCenter ? "1px" : "0px",
+        borderBottomRightRadius: isLogoCenter ? "40px" : "0px",
+        borderBottomLeftRadius: isLogoCenter ? "40px" : "0px",
       }}
       animate={controls}
       style={{
         color: theme === "light" ? "#000000" : "#ffffff",
+        backgroundColor: isLogoCenter
+          ? "rgba(255, 255, 255, 1)"
+          : "rgba(255, 255, 255, 0)",
       }}
     >
-      <div className="pointer-events-auto  w-screen absolute top-0 z-[9999999] h-[300px] flex items-center justify-center">
-        <button
-          onClick={() => handlePush("/")}
-          className="w-[100px] bg-white rounded-full"
-        >
-          Home
-        </button>
-        <button
-          onClick={() => handlePush("/blue")}
-          className="w-[100px] bg-white rounded-full"
-        >
-          Blue
-        </button>
-        <button
-          onClick={() => handlePush("/green")}
-          className="w-[100px] bg-white rounded-full"
-        >
-          Green
-        </button>
-      </div>
       <div className="flex  pointer-events-auto">
         <div className=" flex group">
           <motion.div
@@ -152,7 +145,7 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
         animate={{ x: "-120%" }}
         transition={{ duration: 0.33, delay: isInitial ? 3.82 : 0 }}
       >
-        <div className="overflow-hidden transition-all duration-[100ms] max-w-[10rem] flex items-center justify-center  ">
+        <div className="overflow-hidden max-w-[10rem] flex items-center justify-center  ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -189,7 +182,7 @@ const Header = ({ isLogoCenter }: { isLogoCenter: boolean }) => {
           </div>
         </div>
       </motion.div>
-      <div className="flex gap-2  pointer-events-auto ">
+      <div className="flex gap-2  pointer-events-auto transition-all duration-[100ms] ">
         {["EN", "TH"].map((language) => (
           <div
             key={language}

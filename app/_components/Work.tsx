@@ -3,6 +3,7 @@ import { useState } from "react";
 import SectionContainer from "./share/SectionContainer";
 import TextContainer from "./share/TextContainer";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface Project {
   id: number;
@@ -16,12 +17,11 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "FireFly",
-    description: "Digital platform for creative professionals",
-    image:
-      "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
+    title: "Thai Buddha Bowl",
+    description: "Thai restaurant website",
+    image: "/images/works/thai-buddha-bowl.png",
     category: "Restaurant",
-    link: "/work/firefly",
+    link: "/work/thai-buddha-bowl",
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const categories = ["All", "Restaurant", "Massage"];
 
 const Work = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-
+  const router = useRouter();
   const filteredProjects = projects.filter((project) =>
     selectedCategory === "All" ? true : project.category === selectedCategory
   );
@@ -89,6 +89,7 @@ const Work = () => {
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project) => (
             <motion.div
+              onClick={() => router.push("/works", { scroll: false })}
               layout
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -97,22 +98,28 @@ const Work = () => {
               transition={{ duration: 0.3 }}
               className="group relative overflow-hidden bg-grayPrimary rounded-2xl cursor-pointer flex flex-col"
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 relative z-10"
-                />
-              </div>
-              <div className=" inset-0   duration-300">
-                <div className=" bottom-0 left-0 right-0 p-6 text-black">
-                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                  {/* <p className="text-gray-200 mb-4">{project.description}</p> */}
-                  <span className="inline-block px-3 py-1 mt-3 bg-white/20 rounded-full text-sm border border-black">
-                    {project.category}
-                  </span>
+              <Link
+                href="/works"
+                scroll={false}
+                className="w-full h-full flex flex-col"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 relative z-10"
+                  />
                 </div>
-              </div>
+                <div className=" inset-0   duration-300">
+                  <div className=" bottom-0 left-0 right-0 p-6 text-black">
+                    <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                    {/* <p className="text-gray-200 mb-4">{project.description}</p> */}
+                    <span className="inline-block px-3 py-1 mt-3 bg-white/20 rounded-full text-sm border border-black">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           ))}
           <div className="mt-16 text-center w-full col-span-2 group">

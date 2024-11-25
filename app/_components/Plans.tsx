@@ -9,8 +9,8 @@ const pricingPlans = [
   {
     name: "Package 1",
     description: "Custom web design + search engine optimisation",
-    monthlyPrice: 259,
-    yearlyPrice: 2590, // 10% savings annually
+    monthlyPrice: 299,
+    yearlyPrice: 2990, // 10% savings annually
     color: "bg-primary",
     features: [
       "Custom design to match your Brand",

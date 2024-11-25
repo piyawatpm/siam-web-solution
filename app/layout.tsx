@@ -143,7 +143,8 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${kanetin.variable}`}
     >
       <body className="font-sans antialiased bg-background text-foreground relative min-h-screen h-auto">
-        <Nav /> <PageTransitionEffect>{children}</PageTransitionEffect>
+        <Nav /> 
+        <PageTransitionEffect>{children}</PageTransitionEffect>
       </body>
     </html>
   );
