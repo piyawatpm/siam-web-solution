@@ -21,6 +21,7 @@ import localFont from "next/font/local";
 // import PageTransitionEffect from "./_components/PageTransitionEffect";
 import Nav from "./_components/Nav";
 import PageTransitionEffect from "./_components/PageTransitionEffect";
+import { Suspense } from "react";
 
 const kanetin = localFont({
   src: "../public/fonts/KanetinPersonalUse-vmXK9.otf",
@@ -143,8 +144,11 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} ${kanetin.variable}`}
     >
       <body className="font-sans antialiased bg-background text-foreground relative min-h-screen h-auto">
-        <Nav /> 
-        <PageTransitionEffect>{children}</PageTransitionEffect>
+        {/* <Nav />  */}
+        {/* <Suspense fallback={<div>Loading...</div>}>
+          <PageTransitionEffect>{children}</PageTransitionEffect>
+        </Suspense> */}
+        {children}
       </body>
     </html>
   );

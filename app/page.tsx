@@ -122,6 +122,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <Hero />
       <Work />
       <PayAsYouGo />

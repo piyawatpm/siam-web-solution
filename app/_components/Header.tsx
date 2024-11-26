@@ -5,9 +5,10 @@ import { animate, motion, useAnimation } from "framer-motion";
 import Sidebar from "./Sidebar";
 import { CgMenuRight } from "react-icons/cg";
 import { useRouter } from "next/navigation";
-import useLogoStore from "../store/useLogoStore";
+import { useLogoStore } from "../store/useLogoStore";
 
 const Header = () => {
+  // const isLogoCenter = false;
   const { isLogoCenter } = useLogoStore();
 
   const router = useRouter();

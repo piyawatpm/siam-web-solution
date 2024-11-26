@@ -25,7 +25,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Prola",
+    title: "TBD",
     description: "E-commerce website with modern design",
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
@@ -34,7 +34,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Nexus",
+    title: "TBD",
     description: "Brand identity for tech startup",
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
@@ -43,7 +43,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Wave",
+    title: "TBD",
     description: "Motion graphics for product launch",
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
@@ -89,7 +89,7 @@ const Work = () => {
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project) => (
             <motion.div
-              onClick={() => router.push("/works", { scroll: false })}
+              // onClick={() => router.push("/works", { scroll: false })}
               layout
               key={project.id}
               initial={{ opacity: 0, y: 20 }}

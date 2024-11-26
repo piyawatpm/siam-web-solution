@@ -14,11 +14,11 @@ import Arrow from "./share/Arrow";
 import LogoBg from "./share/logoBg";
 import LightBulb from "./LightBulb";
 import MaskCursor from "./MaskCursor";
-// import useLogoStore from "../store/useLogoStore";
+import { useLogoStore } from "../store/useLogoStore";
 
 const Hero: React.FC = () => {
   // console.log("hero");
-  // const { setIsLogoCenter } = useLogoStore();
+  const { setLogoCenter } = useLogoStore();
 
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -31,11 +31,14 @@ const Hero: React.FC = () => {
 
   //   return () => clearInterval(interval);
   // }, []);
-  // useEffect(() => {
-  //   setIsLogoCenter(!isInView);
-  // }, [isInView, setIsLogoCenter]);
+  useEffect(() => {
+    setLogoCenter(!isInView);
+  }, [isInView, setLogoCenter]);
+
   const isMobile = useIsMobile();
+
   const leftSideWidth = isMobile ? "100%" : "50%";
+
   return (
     <div
       id="hero"
