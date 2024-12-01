@@ -15,17 +15,22 @@ const circleVariants = {
     transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
+
 const menuItems = [
-  "Home",
-  "Custom Web Design",
-  "Custom SEO & Marketing",
-  "Plans",
-  "Contact",
+  { name: "Home", id: "home" },
+  { name: "Video", id: "video" },
+  { name: "Portfolio", id: "portfolio" },
+  { name: "Services", id: "services" },
+  { name: "Benefits", id: "benefits" },
+  { name: "Testimonials", id: "testimonials" },
+  { name: "Plans", id: "plans" },
+  { name: "Contact", id: "contact" },
 ];
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [lang, setLang] = useState("EN");
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -44,12 +49,21 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, onClose]);
+
   const sidebarVariants = {
     open: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
     closed: {
       x: "-100%",
       transition: { type: "spring", stiffness: 300, damping: 30 },
     },
+  };
+
+  const handleMenuClick = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    onClose();
   };
 
   return (
@@ -78,15 +92,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <nav className="flex flex-col space-y-4">
             {menuItems.map((item) => (
               <AnimatedText
-                key={item}
-                text={item}
-                className={`text-4xl !text-start !text-black ${
-                  item === "Service" ? "bg-purple-200 rounded-lg px-2" : ""
-                }`}
-                onClick={() => {
-                  // Handle navigation here
-                  onClose();
-                }}
+                key={item.name}
+                text={item.name}
+                className={`text-4xl !text-start !text-black hover:text-purple-500 cursor-pointer`}
+                onClick={() => handleMenuClick(item.id)}
               />
             ))}
           </nav>
