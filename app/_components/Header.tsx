@@ -6,11 +6,12 @@ import Sidebar from "./Sidebar";
 import { CgMenuRight } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 import { useLogoStore } from "../store/useLogoStore";
+import { useSideMenuStore } from "../store/useSideMenu";
 
 const Header = () => {
   // const isLogoCenter = false;
   const { isLogoCenter } = useLogoStore();
-
+  const { setSidebarOpen } = useSideMenuStore();
   const router = useRouter();
   console.log("piyawat header");
   const [lang, setLang] = useState("EN");
@@ -92,7 +93,7 @@ const Header = () => {
       
       px-5 
       sm:px-10 
-      z-[9999] 
+      z-[9999999] 
       transform-gpu
       will-change-transform
     `}
@@ -121,7 +122,7 @@ const Header = () => {
       <div className="flex  pointer-events-auto">
         <div className=" flex group">
           <motion.div
-            onClick={() => setIsSidebarOpen(true)}
+            onClick={() => setSidebarOpen(true)}
             className="transition-all   group-hover:bg-black group-hover:text-white py-1 px-4 rounded-[2rem] border-[1px] border-current"
           >
             Menu
@@ -212,7 +213,6 @@ const Header = () => {
           </div>
         ))}
       </div>
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </motion.header>
   );
 };

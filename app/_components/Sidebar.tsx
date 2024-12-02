@@ -17,11 +17,11 @@ const circleVariants = {
 };
 
 const menuItems = [
-  { name: "Home", id: "home" },
+  { name: "Home", id: "hero" },
   { name: "Video", id: "video" },
-  { name: "Portfolio", id: "portfolio" },
+  { name: "Portfolio", id: "work" },
   { name: "Services", id: "services" },
-  { name: "Benefits", id: "benefits" },
+  { name: "Benefits", id: "impact" },
   { name: "Testimonials", id: "testimonials" },
   { name: "Plans", id: "plans" },
   { name: "Contact", id: "contact" },
@@ -80,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       )}
       <motion.div
         ref={sidebarRef}
-        className="fixed top-0 left-0 w-[30rem] h-screen bg-white rounded-r-[3rem] shadow-lg z-50 text-black"
+        className="fixed top-0  left-0 w-[30rem] h-screen bg-white rounded-r-[3rem] shadow-lg z-[99999999999] text-black"
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={sidebarVariants}
@@ -89,14 +89,27 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <button onClick={onClose} className="self-end text-2xl mb-8">
             ×
           </button>
-          <nav className="flex flex-col space-y-4">
+          <nav className="flex flex-col gap-y-4">
             {menuItems.map((item) => (
-              <AnimatedText
-                key={item.name}
-                text={item.name}
-                className={`text-4xl !text-start !text-black hover:text-purple-500 cursor-pointer`}
-                onClick={() => handleMenuClick(item.id)}
-              />
+              <div key={item.name} className="flex group gap-x-1">
+                <div className=" flex items-center justify-center transition-all duration-500 h-0 group-hover:h-full group-hover:aspect-square rounded-md bg-primary">
+                  <img
+                    src="/images/arrow.svg"
+                    className=" w-4/5 h-4/5 "
+                    alt=""
+                  />
+                </div>
+                <div className="relative p-1  ">
+                  <p
+                    className={`text-4xl relative z-10 !text-start !text-black   cursor-pointer`}
+                    onClick={() => handleMenuClick(item.id)}
+                  >
+                    {item.name}
+                  </p>
+                  <div className=" w-0 inset-0 transition-all duration-500 group-hover:w-full absolute h-full bg-primary rounded-md  -z-1" />
+                  <div className=" w-0 inset-0 transition-all duration-500 group-hover:w-[105%] absolute h-full  bg-secondary rounded-md  z-[-2]" />
+                </div>
+              </div>
             ))}
           </nav>
           <div className="flex gap-2 mt-auto">

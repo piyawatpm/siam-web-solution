@@ -43,6 +43,7 @@ const PayAsYouGo: React.FC = () => {
 
   return (
     <motion.div
+      id="video"
       ref={sectionRef}
       layoutScroll
       className="relative min-h-[200vh] w-full"

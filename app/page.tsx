@@ -16,10 +16,12 @@ import TextCarousel from "./_components/TextCarousel";
 import LoadingScreen from "./_components/LoadingScreen";
 import Services from "./_components/Services";
 import Work from "./_components/Work";
+import { useSideMenuStore } from "./store/useSideMenu";
+import Sidebar from "./_components/Sidebar";
 
 export default function Home() {
   const isMobile = useIsMobile();
-
+  const { isSidebarOpen, setSidebarOpen } = useSideMenuStore();
   // Example usage
   const texts = [
     "APP",
@@ -122,8 +124,9 @@ export default function Home() {
 
   return (
     <>
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
       <Header />
-      
+
       <Hero />
       <PayAsYouGo />
       <Work />
