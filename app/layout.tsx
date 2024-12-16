@@ -22,6 +22,7 @@ import localFont from "next/font/local";
 import Nav from "./_components/Nav";
 import PageTransitionEffect from "./_components/PageTransitionEffect";
 import { Suspense } from "react";
+import Header from "./_components/Header";
 
 const kanetin = localFont({
   src: "../public/fonts/KanetinPersonalUse-vmXK9.otf",
@@ -32,51 +33,7 @@ export const metadata: Metadata = {
   description:
     "Siam Web Solution offers top-notch web design, development, and digital marketing services for businesses in Thailand and worldwide.",
 };
-const art = {
-  e: {
-    x: "0px",
-    y: "0px",
-    scale: 1,
-    opacity: 1,
-    rotate3d: false,
-    rotate: 0,
-    rotateX: 0,
-    rotateY: 0,
-    transition: {
-      type: "tween",
-      delay: 0,
-      duration: 0.2,
-      ease: [0.27, 0, 0.51, 1],
-      stiffness: 400,
-      damping: 30,
-      mass: 1,
-    },
-  },
-  t: {
-    mask: {
-      type: "circle",
-      x: "50%",
-      y: "50%",
-    },
-    opacity: 1,
-    rotate: 0,
-    rotate3d: false,
-    rotateX: 0,
-    rotateY: 0,
-    scale: 1,
-    transition: {
-      damping: 40,
-      delay: 0,
-      duration: 0.2,
-      ease: [0.27, 0, 0.51, 1],
-      mass: 1,
-      stiffness: 250,
-      type: "spring",
-    },
-    x: "0px",
-    y: "0px",
-  },
-};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -141,14 +98,20 @@ export default function RootLayout({
 
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable} ${kanetin.variable}`}
+      className={`${inter.variable} ${poppins.variable} ${kanetin.variable} relative overflow-x-hidden`}
     >
-      <body className="font-sans antialiased bg-background text-foreground relative min-h-screen h-auto">
+      <body className=" relative flex flex-col overflow-x-hidden">
+        <nav>
+          <Header />
+        </nav>
+
+        {/* <body className="font-sans flex flex-col antialiased bg-background text-foreground relative min-h-screen "> */}
         {/* <Nav />  */}
         {/* <Suspense fallback={<div>Loading...</div>}>
-          <PageTransitionEffect>{children}</PageTransitionEffect>
-        </Suspense> */}
+    <PageTransitionEffect>{children}</PageTransitionEffect>
+  </Suspense> */}
         {children}
+        {/* </body> */}
       </body>
     </html>
   );

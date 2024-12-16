@@ -92,7 +92,7 @@ const Services = () => {
   };
 
   return (
-    <SectionContainer id="services" className="bg-white">
+    <SectionContainer id="services" className="bg-white py-12 sm:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <TextContainer className=" mx-auto">Services</TextContainer>

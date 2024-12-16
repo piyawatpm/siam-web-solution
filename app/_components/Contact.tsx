@@ -7,7 +7,7 @@ import AnimatedText from "./share/AnimatedText";
 import StartButton from "./share/startButton";
 import LogoBg from "./share/logoBg";
 
-const Contact: React.FC = () => {
+const Contact: React.FC = ({ isMobile }: { isMobile: boolean }) => {
   const controls = useAnimation();
   const sectionRef = useRef(null);
 
@@ -66,22 +66,22 @@ const Contact: React.FC = () => {
           className="text-center mb-12"
         >
           <AnimatedText
-            className=" text-5xl font-bold mb-4"
+            className=" justify-center text-[23px] sm:text-[3rem] font-bold mb-4"
             text="Transform Your Digital Presence"
           />
           <AnimatedText
-            className=" text-5xl font-bold mb-4 !text-center !justify-center"
+            className=" text-[23px] sm:text-[3rem] font-bold mb-4 !text-center !justify-center"
             text="With Expert WebSolutions"
             highlightWords={["WebSolutions"]}
           />
 
           <AnimatedText
-            className="text-gray-600  !text-base items-center justify-center"
+            className="text-gray-600  items-center justify-center sm:!text-base !text-[11px]"
             text="Share your vision with us and let our team of expert developers"
           />
 
           <AnimatedText
-            className="text-gray-600  !text-base items-center justify-center"
+            className="text-gray-600  items-center justify-center sm:!text-base !text-[11px]"
             text="craft the perfect digital solution for your business."
           />
         </motion.div>
@@ -287,7 +287,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div> */}
-          <div className="text-4xl flex flex-col md:text-5xl font-bold text-center  text-black">
+          <div className="text-4xl flex flex-col md text-[25px]:sm:text-[3rem] font-bold text-center  text-black">
             <p>Modern</p>
             <p>Responsive</p>
             <p>Custom Websites</p>

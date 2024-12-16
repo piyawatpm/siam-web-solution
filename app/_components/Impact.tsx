@@ -42,7 +42,7 @@ const Impact: React.FC = () => {
   return (
     <SectionContainer
       id="impact"
-      className="bg-white py-24 relative overflow-visible !h-fit"
+      className="bg-white py-12 sm:py-24 relative overflow-visible !h-fit"
     >
       <div className="container mx-auto px-4 overflow-visible">
         <div className="flex flex-col md:flex-row gap-12 overflow-visible relative">

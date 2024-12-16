@@ -4,17 +4,28 @@ import {
   useMotionValueEvent,
   useScroll,
   useTransform,
+  useInView,
+  useAnimation,
 } from "framer-motion";
 
 const PayAsYouGo: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const controls = useAnimation();
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start({ scale: 1, opacity: 1 });
+    } else {
+      controls.start({ scale: 0.8, opacity: 0.5 });
+    }
+  }, [isInView, controls]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Create intersection observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,15 +37,12 @@ const PayAsYouGo: React.FC = () => {
         });
       },
       {
-        // Adjust threshold as needed - 0.1 means video will play when 10% is visible
         threshold: 0.1,
       }
     );
 
-    // Start observing the video element
     observer.observe(video);
 
-    // Cleanup observer on component unmount
     return () => {
       observer.unobserve(video);
       observer.disconnect();
@@ -46,14 +54,23 @@ const PayAsYouGo: React.FC = () => {
       id="video"
       ref={sectionRef}
       layoutScroll
-      className="relative min-h-[200vh] w-full"
+      className="relative sm:min-h-[200vh] w-full"
     >
       <div className="sticky top-0 h-screen w-full flex items-center justify-center">
-        <motion.div className="w-full h-full relative">
+        <motion.div
+          className="w-full h-full relative"
+          initial={{ scale: 0.8, opacity: 0.5 }}
+          animate={controls}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+        >
           <video
             ref={videoRef}
             className="w-full h-full object-cover"
             loop
+            muted
             playsInline
             poster="/images/video-poster.jpg"
           >

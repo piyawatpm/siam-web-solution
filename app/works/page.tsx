@@ -44,7 +44,7 @@ const Works = () => {
         );
 
   return (
-    <div className="min-h-screen bg-white px-4 py-24">
+    <div className="min-h-screen bg-white px-4 py-12 sm:py-24">
       <div className="container mx-auto">
         {/* Header Section */}
         <motion.div

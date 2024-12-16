@@ -10,7 +10,8 @@ import Testimonials from "./_components/Testimonials";
 import Impact from "./_components/Impact";
 import Compare from "./_components/Compare";
 import PayAsYouGo from "./_components/PayAsYouGo";
-import useIsMobile from "./_hook/useIsMobile";
+
+
 import Process from "./_components/Process";
 import TextCarousel from "./_components/TextCarousel";
 import LoadingScreen from "./_components/LoadingScreen";
@@ -20,7 +21,6 @@ import { useSideMenuStore } from "./store/useSideMenu";
 import Sidebar from "./_components/Sidebar";
 
 export default function Home() {
-  const isMobile = useIsMobile();
   const { isSidebarOpen, setSidebarOpen } = useSideMenuStore();
   // Example usage
   const texts = [
@@ -125,7 +125,6 @@ export default function Home() {
   return (
     <>
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <Header />
 
       <Hero />
       <PayAsYouGo />

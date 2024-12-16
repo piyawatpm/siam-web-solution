@@ -4,8 +4,6 @@ import { motion, useInView } from "framer-motion";
 import MovingText from "./share/MovingText";
 import { useEffect, useRef, useState } from "react";
 import AnimatedText from "./share/AnimatedText";
-import isMobile from "../_hook/useIsMobile";
-import useIsMobile from "../_hook/useIsMobile";
 import CustomButton from "./share/CustomButton";
 import { MdAttachMoney } from "react-icons/md";
 import { AiOutlineDollarCircle } from "react-icons/ai";
@@ -18,6 +16,19 @@ import { useLogoStore } from "../store/useLogoStore";
 
 const Hero: React.FC = () => {
   // console.log("hero");
+  const [isMobile, setIsMobile] = useState(null);
+
+  useEffect(() => {
+    // Check for mobile on client-side only
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // You can adjust this breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   const { setLogoCenter } = useLogoStore();
 
   const ref = useRef(null);
@@ -35,10 +46,16 @@ const Hero: React.FC = () => {
     setLogoCenter(!isInView);
   }, [isInView, setLogoCenter]);
 
-  const isMobile = useIsMobile();
-
+  console.log("isMobile", isMobile);
   const leftSideWidth = isMobile ? "100%" : "50%";
-
+  if (isMobile === null) return null;
+  const handleGetStarted = () => {
+    console.log("get started");
+    const section = document.getElementById("video");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div
       id="hero"
@@ -102,7 +119,7 @@ const Hero: React.FC = () => {
           <motion.div className=" w-full h-full bg-white flex px-5 sm:px-10 relative">
             {isMobile && <LogoBg />}
             <motion.div className="h-full flex  flex-col   justify-center mr-auto w-full md:w-1/2  overflow-hidden z-20">
-              <div className=" absolute top-3 left-3">
+              <div className=" hidden sm:block absolute top-3 left-3">
                 <MovingText text="Quality" />
               </div>
               <div className=" w-full h-full flex flex-col justify-center md:justify-end pt-[91px]  md:py-4">
@@ -110,19 +127,19 @@ const Hero: React.FC = () => {
                   <div className=" flex flex-col text-start ">
                     <AnimatedText
                       text="Your Website is the"
-                      className=" !font-medium text-[3rem] mb-3"
+                      className=" !font-medium text-[25px] sm:text-[3rem] mb-3"
                       delay={3.7}
                     />
 
                     <AnimatedText
-                      className=" !font-medium text-[5rem]  mb-3"
+                      className=" !font-medium text-[65px] sm:text-[5rem]  mb-3"
                       text="DigitalDoor"
                       highlightWords={["DigitalDoor"]}
                       delay={3.8}
                     />
 
                     <AnimatedText
-                      className=" !font-medium text-[3rem]"
+                      className=" !font-medium text-[25px] sm:text-[3rem]"
                       text="to Your Store"
                       delay={3.9}
                     />
@@ -174,9 +191,12 @@ const Hero: React.FC = () => {
                       initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.2, delay: 4.0 }}
-                      className="flex relative h-fit flex-col items-center justify-center rounded-2xl p-5"
+                      className="flex relative h-fit flex-col items-center justify-center rounded-2xl p-5 pointer-events-auto"
                     >
-                      <button className="group flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-white transition-all hover:bg-gray-800">
+                      <button
+                        onClick={handleGetStarted}
+                        className="group flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-white transition-all hover:bg-gray-800"
+                      >
                         Get Started
                         <motion.div
                           animate={{
@@ -260,7 +280,9 @@ const Hero: React.FC = () => {
             times: [0, 0.1, 0.33, 0.43, 0.66, 0.9, 1],
           }}
           // transition={{ duration: 2, ease: "easeInOut" }}
-          className="h-full w-full   md:w-1/2  ml-auto relative z-20 bg-transparent "
+          className={`h-full w-full   sm:w-1/2  ml-auto relative z-20 bg-transparent ${
+            isMobile ? "hidden" : ""
+          }`}
         >
           <motion.div
             animate={{
@@ -272,7 +294,7 @@ const Hero: React.FC = () => {
               ease: "easeInOut",
               times: [0, 0.1, 0.33, 0.43, 0.66, 1],
             }}
-            className={` w-full h-full bg-primary  flex overflow-hidden relative ${
+            className={` w-full h-full bg-primary hidden sm:flex overflow-hidden relative ${
               isMobile ? "hidden" : ""
             }`}
           >

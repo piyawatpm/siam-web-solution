@@ -7,10 +7,22 @@ import { CgMenuRight } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 import { useLogoStore } from "../store/useLogoStore";
 import { useSideMenuStore } from "../store/useSideMenu";
-
 const Header = () => {
   // const isLogoCenter = false;
-  const { isLogoCenter } = useLogoStore();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check for mobile on client-side only
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // You can adjust this breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+  const { isLogoCenter, setLogoCenter } = useLogoStore();
   const { setSidebarOpen } = useSideMenuStore();
   const router = useRouter();
   console.log("piyawat header");
@@ -22,6 +34,7 @@ const Header = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   console.log("header", isLogoCenter);
   const [isInitial, setIsInitial] = useState(true);
+
   useEffect(() => {
     const animateHeader = async () => {
       // Appear from top to bottom
@@ -43,7 +56,7 @@ const Header = () => {
   const handleMoveLogo = () => {
     console.log("logoRef.current", logoRef.current);
     animate(logoRef.current, {
-      x: isLogoCenter ? "-50%" : "-120%",
+      x: isMobile ? "-50%" : isLogoCenter ? "-50%" : "-120%",
       transition: { duration: 1.5 },
     });
   };
@@ -81,6 +94,12 @@ const Header = () => {
     console.log("path", path);
     router.push(path, { scroll: false });
   };
+  const handleNaviageToContact = () => {
+    const section = document.getElementById("contact");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <motion.header
       className={`
@@ -96,6 +115,9 @@ const Header = () => {
       z-[9999999] 
       transform-gpu
       will-change-transform
+      max-w-[100dvw]
+      sm:h-auto 
+      h-[90px]
     `}
       ref={headerRef}
       initial={{
@@ -133,9 +155,14 @@ const Header = () => {
             <CgMenuRight className="w-[20px] h-[20px]" />
           </motion.div>
         </div>
-        <motion.div className="transition-all hover:bg-black hover:text-white ml-2 py-1 px-4 rounded-[2rem] border-[1px] border-current">
-          Contact
-        </motion.div>
+        {!isMobile && (
+          <motion.div
+            onClick={handleNaviageToContact}
+            className="transition-all hover:bg-black hover:text-white ml-2 py-1 px-4 rounded-[2rem] border-[1px] border-current"
+          >
+            Contact
+          </motion.div>
+        )}
       </div>
       <motion.div
         ref={logoRef}
@@ -153,7 +180,7 @@ const Header = () => {
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 400 350"
             className={`  h-auto w-10 ${
-              isLogoCenter ? "w-14" : "w-10"
+              isMobile ? "!w-10" : isLogoCenter ? "!w-14" : "!w-10"
             } transition-all duration-[100ms]`}
             version="1.0"
           >
@@ -169,14 +196,18 @@ const Header = () => {
           <div className="flex flex-col ">
             <span
               className={` ${
-                isLogoCenter ? "text-base" : "text-sm"
+                isMobile ? "text-sm" : isLogoCenter ? "text-base" : "text-sm"
               }  leading-[1em] transition-all duration-[100ms]`}
             >
               SIAM
             </span>
             <span
               className={` ${
-                isLogoCenter ? "text-[0.7rem]" : "text-[0.5rem]"
+                isMobile
+                  ? "text-[0.5rem]"
+                  : isLogoCenter
+                  ? "text-[0.7rem]"
+                  : "text-[0.5rem]"
               }  leading-[1em] transition-all duration-[100ms]`}
             >
               WEBSOLUTION

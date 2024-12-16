@@ -108,7 +108,7 @@ const PricingPlans: React.FC = () => {
   };
 
   return (
-    <SectionContainer id="plans">
+    <SectionContainer id="plans" className="py-12 sm:py-24">
       <div className="w-full px-5 sm:px-10 mx-auto ">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <div className="flex gap-x-2 w-auto">

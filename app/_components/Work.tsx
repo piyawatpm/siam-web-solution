@@ -16,14 +16,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 1,
-    title: "Thai Buddha Bowl",
-    description: "Thai restaurant website",
-    image: "/images/works/thai-buddha-bowl.png",
-    category: "Restaurant",
-    link: "/work/thai-buddha-bowl",
-  },
-  {
     id: 2,
     title: "TBD",
     description: "E-commerce website with modern design",
@@ -31,6 +23,14 @@ const projects: Project[] = [
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
     category: "Massage",
     link: "/work/prola",
+  },
+  {
+    id: 1,
+    title: "Thai Buddha Bowl",
+    description: "Thai restaurant website",
+    image: "/images/works/thai-buddha-bowl.png",
+    category: "Restaurant",
+    link: "/work/thai-buddha-bowl",
   },
   {
     id: 3,
@@ -62,7 +62,7 @@ const Work = () => {
   );
 
   return (
-    <SectionContainer id="work" className=" py-24 bg-white">
+    <SectionContainer id="work" className=" py-12 sm:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <TextContainer className="mx-auto">Our Work</TextContainer>
@@ -86,7 +86,10 @@ const Work = () => {
           </div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 gap-y-5 sm:gap-8"
+        >
           {filteredProjects.map((project) => (
             <motion.div
               // onClick={() => router.push("/works", { scroll: false })}

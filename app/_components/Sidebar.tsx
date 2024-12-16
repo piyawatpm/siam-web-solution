@@ -27,7 +27,7 @@ const menuItems = [
   { name: "Contact", id: "contact" },
 ];
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMobile }) => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [lang, setLang] = useState("EN");
 
@@ -86,7 +86,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         variants={sidebarVariants}
       >
         <div className="p-6 flex flex-col h-full">
-          <button onClick={onClose} className="self-end text-2xl mb-8">
+          <button
+            onClick={onClose}
+            className="self-end text-2xl leading-none w-8 h-8 rounded-full border border-black"
+          >
             ×
           </button>
           <nav className="flex flex-col gap-y-4">
@@ -101,7 +104,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 </div>
                 <div className="relative p-1  ">
                   <p
-                    className={`text-4xl relative z-10 !text-start !text-black   cursor-pointer`}
+                    className={`text-2xl sm:text-4xl relative z-10 !text-start !text-black   cursor-pointer`}
                     onClick={() => handleMenuClick(item.id)}
                   >
                     {item.name}
