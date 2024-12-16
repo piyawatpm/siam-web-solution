@@ -66,11 +66,11 @@ const Contact: React.FC = ({ isMobile }: { isMobile: boolean }) => {
           className="text-center mb-12"
         >
           <AnimatedText
-            className=" justify-center text-[23px] sm:text-[3rem] font-bold mb-4"
+            className=" justify-center !text-[23.5px] sm:!text-[2rem] md:!text-[3rem] font-bold mb-4"
             text="Transform Your Digital Presence"
           />
           <AnimatedText
-            className=" text-[23px] sm:text-[3rem] font-bold mb-4 !text-center !justify-center"
+            className=" !text-[23.5px] sm:!text-[2rem] md:!text-[3rem] font-bold mb-4 !text-center !justify-center"
             text="With Expert WebSolutions"
             highlightWords={["WebSolutions"]}
           />
@@ -287,7 +287,7 @@ const Contact: React.FC = ({ isMobile }: { isMobile: boolean }) => {
             </div>
           </div>
         </div> */}
-          <div className="text-4xl flex flex-col md text-[25px]:sm:text-[3rem] font-bold text-center  text-black">
+          <div className="text-4xl flex flex-col md text-[25px]:sm:!text-[3rem] font-bold text-center  text-black">
             <p>Modern</p>
             <p>Responsive</p>
             <p>Custom Websites</p>
