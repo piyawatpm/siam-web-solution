@@ -100,7 +100,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${poppins.variable} ${kanetin.variable} relative overflow-x-hidden`}
     >
-      <body className=" relative flex flex-col overflow-x-hidden">
+      <body className=" relative flex flex-col ">
         <nav>
           <Header />
         </nav>

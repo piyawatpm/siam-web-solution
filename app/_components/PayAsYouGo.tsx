@@ -54,7 +54,7 @@ const PayAsYouGo: React.FC = () => {
       id="video"
       ref={sectionRef}
       layoutScroll
-      className="relative sm:min-h-[200vh] w-full"
+      className="relative sm:min-h-[200vh] w-full overflow-x-hidden"
     >
       <div className="sticky top-0 h-screen w-full flex items-center justify-center">
         <motion.div

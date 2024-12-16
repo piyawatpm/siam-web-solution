@@ -80,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMobile }) => {
       )}
       <motion.div
         ref={sidebarRef}
-        className="fixed top-0  left-0 w-[30rem] h-screen bg-white rounded-r-[3rem] shadow-lg z-[99999999999] text-black"
+        className="fixed top-0  left-0 w-[20rem] sm:w-[30rem] h-screen bg-white rounded-r-[3rem] shadow-lg z-[99999999999] text-black"
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={sidebarVariants}
