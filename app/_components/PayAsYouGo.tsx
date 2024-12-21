@@ -56,7 +56,7 @@ const PayAsYouGo: React.FC = () => {
       layoutScroll
       className="relative sm:min-h-[200vh] w-full overflow-x-hidden"
     >
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center">
+      <div className="fixed top-0 h-screen w-full flex items-center justify-center">
         <motion.div
           className="w-full h-full relative"
           initial={{ scale: 0.8, opacity: 0.5 }}
