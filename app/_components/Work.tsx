@@ -132,7 +132,7 @@ const Work = () => {
           whileInView="visible"
           viewport={{ once: true }}
           layout
-          className="flex flex-col sm:grid !grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-8"
+          className="flex flex-col sm:grid sm:grid-cols-2 gap-y-5 sm:gap-8"
         >
           {filteredProjects.map((project) => (
             <motion.div
@@ -158,7 +158,7 @@ const Work = () => {
                       duration: 0.3,
                       ease: "easeOut",
                     }}
-                    className="w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] m-auto object-cover absolute inset-0 z-10"
+                    className=" m-auto object-cover absolute inset-0 z-10"
                   />
                   <motion.img
                     src={project.image}
