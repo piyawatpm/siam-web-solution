@@ -10,7 +10,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
-  category: "Restaurant" | "Massage";
+  category: ("Restaurant" | "Massage" | string)[];
   link: string;
   logo?: string;
 }
@@ -22,7 +22,7 @@ const projects: Project[] = [
     description: "Thai restaurant website",
     image: "/images/works/pinto-thai-station.png",
     logo: "/images/works/pinto-thai-station-logo.png",
-    category: "Restaurant",
+    category: ["Restaurant", "Goldcoast"],
     link: "https://major-wheel-003975.framer.app/",
   },
   {
@@ -32,7 +32,7 @@ const projects: Project[] = [
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
     logo: "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
-    category: "Massage",
+    category: ["Massage"],
     link: "/work/prola",
   },
 
@@ -43,7 +43,7 @@ const projects: Project[] = [
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
     logo: "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
-    category: "Restaurant",
+    category: ["Restaurant"],
     link: "/work/nexus",
   },
   {
@@ -53,7 +53,7 @@ const projects: Project[] = [
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
     logo: "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
-    category: "Massage",
+    category: ["Massage"],
     link: "/work/wave",
   },
 ];
@@ -75,7 +75,7 @@ const Work = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 1, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
@@ -86,9 +86,11 @@ const Work = () => {
   };
 
   const filteredProjects = projects.filter((project) =>
-    selectedCategory === "All" ? true : project.category === selectedCategory
+    selectedCategory === "All"
+      ? true
+      : project.category.includes(selectedCategory)
   );
-
+  console.log(selectedCategory);
   return (
     <SectionContainer id="work" className="py-12 sm:py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -130,13 +132,13 @@ const Work = () => {
           whileInView="visible"
           viewport={{ once: true }}
           layout
-          className="grid grid-cols-1 md:grid-cols-2 gap-y-5 sm:gap-8"
+          className="flex flex-col sm:grid !grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-8"
         >
           {filteredProjects.map((project) => (
             <motion.div
+              key={project.id}
               variants={itemVariants}
               layout
-              key={project.id}
               className="group relative overflow-hidden bg-grayPrimary rounded-2xl cursor-pointer flex flex-col"
             >
               <Link
@@ -156,7 +158,7 @@ const Work = () => {
                       duration: 0.3,
                       ease: "easeOut",
                     }}
-                    className="w-[350px] h-[350px] m-auto object-cover absolute inset-0 z-10"
+                    className="w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] m-auto object-cover absolute inset-0 z-10"
                   />
                   <motion.img
                     src={project.image}
@@ -174,9 +176,16 @@ const Work = () => {
                 <div className="inset-0 duration-300">
                   <div className="bottom-0 left-0 right-0 p-6 text-black">
                     <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                    <span className="inline-block px-3 py-1 mt-3 bg-white/20 rounded-full text-sm border border-black">
-                      {project.category}
-                    </span>
+                    <div className=" flex gap-x-2 items-center">
+                      {project.category.map((category, index) => (
+                        <span
+                          key={index}
+                          className="inline-block px-3 py-1 mt-3 bg-white/20 rounded-full text-sm border border-black"
+                        >
+                          {category}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </Link>

@@ -1,12 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  useInView,
-  useAnimation,
-} from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import { motion, useInView, useAnimation } from "framer-motion";
 
 const PayAsYouGo: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -54,9 +47,9 @@ const PayAsYouGo: React.FC = () => {
       id="video"
       ref={sectionRef}
       layoutScroll
-      className="relative sm:min-h-[200vh] w-full overflow-x-hidden"
+      className="relative w-full min-h-[200vh]"
     >
-      <div className="fixed top-0 h-screen w-full flex items-center justify-center">
+      <div className="fixed top-0 h-screen w-full max-w-[100dvw] flex items-center justify-center">
         <motion.div
           className="w-full h-full relative"
           initial={{ scale: 0.8, opacity: 0.5 }}

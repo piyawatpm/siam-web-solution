@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { animate, motion, useAnimation } from "framer-motion";
+import { animate, motion, useAnimation, useScroll } from "framer-motion";
 import Sidebar from "./Sidebar";
 import { CgMenuRight } from "react-icons/cg";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,7 @@ import { useLogoStore } from "../store/useLogoStore";
 import { useSideMenuStore } from "../store/useSideMenu";
 const Header = () => {
   // const isLogoCenter = false;
+  const { scrollY } = useScroll();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -24,18 +25,16 @@ const Header = () => {
   }, []);
   const { isLogoCenter, setLogoCenter } = useLogoStore();
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY > 50) {
+    const unsubscribe = scrollY.onChange((currentScrollY) => {
+      if (currentScrollY > 50) {
         setLogoCenter(true);
       } else {
         setLogoCenter(false);
       }
-    };
+    });
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [setLogoCenter]);
+    return () => unsubscribe();
+  }, [scrollY, setLogoCenter]);
   const { setSidebarOpen } = useSideMenuStore();
   const router = useRouter();
   console.log("piyawat header");
