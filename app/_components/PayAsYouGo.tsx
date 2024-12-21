@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 const PayAsYouGo: React.FC = () => {
@@ -6,41 +6,23 @@ const PayAsYouGo: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const controls = useAnimation();
   const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    if (isInView) {
+    if (isInView && isPlaying) {
       controls.start({ scale: 1, opacity: 1 });
     } else {
       controls.start({ scale: 0.8, opacity: 0.5 });
     }
-  }, [isInView, controls]);
+  }, [isInView, controls, isPlaying]);
 
-  useEffect(() => {
+  const handlePlay = () => {
     const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play();
-          } else {
-            video.pause();
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.unobserve(video);
-      observer.disconnect();
-    };
-  }, []);
+    if (video) {
+      video.play();
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <motion.div
@@ -63,13 +45,41 @@ const PayAsYouGo: React.FC = () => {
             ref={videoRef}
             className="w-full h-full object-cover"
             loop
-            muted
-            playsInline
+            controls
+            muted={false}
             poster="/images/video-poster.jpg"
           >
             <source src="/vid.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          {!isPlaying && (
+            <motion.button
+              onClick={handlePlay}
+              className="absolute inset-0 flex items-center justify-center bg-black/50 hover:bg-black/60 transition-colors"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <img
+                src="/images/vid.jpg"
+                alt="Video thumbnail"
+                className="w-full h-full object-cover absolute inset-0 -z-10"
+              />
+              <div className="relative">
+                <div className="flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center">
+                    <svg
+                      className="text-black"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </motion.button>
+          )}
         </motion.div>
       </div>
     </motion.div>

@@ -37,14 +37,14 @@ const Header = () => {
   }, [scrollY, setLogoCenter]);
   const { setSidebarOpen } = useSideMenuStore();
   const router = useRouter();
-  console.log("piyawat header");
+
   const [lang, setLang] = useState("EN");
   const controls = useAnimation();
   const [theme, setTheme] = useState("dark");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const logoRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  console.log("header", isLogoCenter);
+
   const [isInitial, setIsInitial] = useState(true);
 
   useEffect(() => {
