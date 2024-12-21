@@ -12,32 +12,37 @@ interface Project {
   image: string;
   category: "Restaurant" | "Massage";
   link: string;
+  logo?: string;
 }
 
 const projects: Project[] = [
+  {
+    id: 1,
+    title: "Pinto Thai Station",
+    description: "Thai restaurant website",
+    image: "/images/works/pinto-thai-station.png",
+    logo: "/images/works/pinto-thai-station-logo.png",
+    category: "Restaurant",
+    link: "https://major-wheel-003975.framer.app/",
+  },
   {
     id: 2,
     title: "TBD",
     description: "E-commerce website with modern design",
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
+    logo: "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
     category: "Massage",
     link: "/work/prola",
   },
-  {
-    id: 1,
-    title: "Thai Buddha Bowl",
-    description: "Thai restaurant website",
-    image: "/images/works/thai-buddha-bowl.png",
-    category: "Restaurant",
-    link: "/work/thai-buddha-bowl",
-  },
+
   {
     id: 3,
     title: "TBD",
     description: "Brand identity for tech startup",
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
+    logo: "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
     category: "Restaurant",
     link: "/work/nexus",
   },
@@ -47,6 +52,7 @@ const projects: Project[] = [
     description: "Motion graphics for product launch",
     image:
       "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
+    logo: "https://framerusercontent.com/images/NIZVyUxsAfTXib8VDzl1QuAdlUg.png",
     category: "Massage",
     link: "/work/wave",
   },
@@ -57,7 +63,7 @@ const categories = ["All", "Restaurant", "Massage"];
 const Work = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const router = useRouter();
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -86,7 +92,7 @@ const Work = () => {
   return (
     <SectionContainer id="work" className="py-12 sm:py-24 bg-white">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -134,15 +140,35 @@ const Work = () => {
               className="group relative overflow-hidden bg-grayPrimary rounded-2xl cursor-pointer flex flex-col"
             >
               <Link
-                href="/works"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 scroll={false}
                 className="w-full h-full flex flex-col"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
+                <div className="overflow-hidden aspect-[4/3] relative flex">
+                  <motion.img
+                    src={project.logo}
+                    alt={project.title}
+                    initial={{ opacity: 1, scale: 1 }}
+                    whileHover={{ opacity: 0, scale: 1.2 }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeOut",
+                    }}
+                    className="w-[350px] h-[350px] m-auto object-cover absolute inset-0 z-10"
+                  />
+                  <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 relative z-10"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    whileHover={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeInOut",
+                      delay: 0.2,
+                    }}
+                    className="w-full h-full object-cover absolute inset-0 z-20"
                   />
                 </div>
                 <div className="inset-0 duration-300">
@@ -156,8 +182,8 @@ const Work = () => {
               </Link>
             </motion.div>
           ))}
-          
-          <motion.div 
+
+          <motion.div
             variants={itemVariants}
             className="mt-16 text-center w-full col-span-2 group"
           >

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import MovingText from "./share/MovingText";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedText from "./share/AnimatedText";
 import CustomButton from "./share/CustomButton";
 import { MdAttachMoney } from "react-icons/md";
@@ -29,10 +29,7 @@ const Hero: React.FC = () => {
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-  const { setLogoCenter } = useLogoStore();
 
-  const ref = useRef(null);
-  const isInView = useInView(ref);
   // const [timer, setTimer] = useState<number>(0);
 
   // useEffect(() => {
@@ -42,9 +39,6 @@ const Hero: React.FC = () => {
 
   //   return () => clearInterval(interval);
   // }, []);
-  useEffect(() => {
-    setLogoCenter(!isInView);
-  }, [isInView, setLogoCenter]);
 
   console.log("isMobile", isMobile);
   const leftSideWidth = isMobile ? "100%" : "50%";
@@ -59,7 +53,7 @@ const Hero: React.FC = () => {
   return (
     <div
       id="hero"
-      className="w-screen relative  h-screen flex  items-center justify-center  overflow-hidden bg-black "
+      className="w-screen relative  h-screen flex  items-center justify-center  overflow-hidden bg-black z-10 "
     >
       {/* <div className="absolute top-10 right-10 z-[9999]  font-mono text-white/50">
         <div className="text-[50px]">{(timer / 1000).toFixed(3)}s</div>
@@ -79,7 +73,7 @@ const Hero: React.FC = () => {
           // 0.66 = 2.64 sec
           times: [0, 0.1, 0.33, 0.43, 0.66, 0.8, 1],
         }}
-        className="flex z-20   absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
+        className="flex z-20   absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  "
       >
         <motion.div
           initial={{
@@ -299,7 +293,6 @@ const Hero: React.FC = () => {
             }`}
           >
             <motion.div
-              ref={ref}
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.21, delay: 3.9 }}

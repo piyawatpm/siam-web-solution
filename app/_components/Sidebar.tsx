@@ -116,7 +116,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMobile }) => {
             ))}
           </nav>
           <div className="flex gap-2 mt-auto">
-            {["EN", "TH"].map((language) => (
+            {["EN"].map((language) => (
               <div
                 key={language}
                 className="relative p-1 h-8 w-8 flex items-center justify-center cursor-pointer"

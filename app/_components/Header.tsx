@@ -23,6 +23,19 @@ const Header = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
   const { isLogoCenter, setLogoCenter } = useLogoStore();
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 50) {
+        setLogoCenter(true);
+      } else {
+        setLogoCenter(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [setLogoCenter]);
   const { setSidebarOpen } = useSideMenuStore();
   const router = useRouter();
   console.log("piyawat header");
@@ -78,7 +91,7 @@ const Header = () => {
     if (!isInitial) {
       console.log("");
       handleMoveLogo();
-      handleTransformHeader();
+      // handleTransformHeader();
     }
   }, [isLogoCenter, isInitial]);
 
@@ -145,20 +158,28 @@ const Header = () => {
         <div className=" flex group">
           <motion.div
             onClick={() => setSidebarOpen(true)}
-            className="transition-all   group-hover:bg-black group-hover:text-white py-1 px-4 rounded-[2rem] border-[1px] border-current"
+            className={`transition-all  ${
+              isLogoCenter ? "bg-white" : ""
+            }  group-hover:bg-black group-hover:text-white py-1 px-4 rounded-[2rem] border-[1px] border-current`}
           >
             Menu
           </motion.div>
           {/* <Image src="/images/cursor.png" alt="cursor" width={16} height={16} /> */}
 
-          <motion.div className="transition-all group-hover:bg-black group-hover:text-white  h-full aspect-square flex items-center justify-center rounded-full border-[1px] border-current">
+          <motion.div
+            className={`transition-all  ${
+              isLogoCenter ? "bg-white" : ""
+            }  group-hover:bg-black group-hover:text-white  h-full aspect-square flex items-center justify-center rounded-full border-[1px] border-current`}
+          >
             <CgMenuRight className="w-[20px] h-[20px]" />
           </motion.div>
         </div>
         {!isMobile && (
           <motion.div
             onClick={handleNaviageToContact}
-            className="transition-all hover:bg-black hover:text-white ml-2 py-1 px-4 rounded-[2rem] border-[1px] border-current"
+            className={`transition-all hover:bg-black ${
+              isLogoCenter ? "bg-white" : ""
+            } hover:text-white ml-2 py-1 px-4 rounded-[2rem] border-[1px] border-current`}
           >
             Contact
           </motion.div>
@@ -216,7 +237,7 @@ const Header = () => {
         </div>
       </motion.div>
       <div className="flex gap-2  pointer-events-auto transition-all duration-[100ms] ">
-        {["EN", "TH"].map((language) => (
+        {["EN"].map((language) => (
           <div
             key={language}
             className="relative p-1 h-8 w-8 flex items-center justify-center cursor-pointer"
