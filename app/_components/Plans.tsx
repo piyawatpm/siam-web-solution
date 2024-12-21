@@ -12,6 +12,7 @@ const pricingPlans = [
     monthlyPrice: 299,
     yearlyPrice: 2990, // 10% savings annually
     color: "bg-primary",
+    link: "https://buy.stripe.com/6oEeYz9OTelV9Z66oo",
     features: [
       "Custom design to match your Brand",
       "Responsive Web Design",
@@ -169,6 +170,12 @@ const PricingPlans: React.FC = () => {
           </div>
         </div>
 
+        <div className="text-center mb-4">
+          <span className="*text-sm font-medium ">
+            *All plans include Free Domain and Hosting
+          </span>
+        </div>
+
         <AnimatedText
           text="Explore Our Plans"
           big
@@ -184,6 +191,9 @@ const PricingPlans: React.FC = () => {
         >
           {pricingPlans.map((plan, index) => (
             <motion.div
+              onClick={
+                plan.link ? () => window.open(plan.link, "_blank") : null
+              }
               key={plan.name}
               variants={cardVariants}
               className={`rounded-3xl  ${
